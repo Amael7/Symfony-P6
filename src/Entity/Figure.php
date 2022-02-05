@@ -40,6 +40,9 @@ class Figure
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Message::class, orphanRemoval: true)]
     private $messages;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $type;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -198,6 +201,18 @@ class Figure
                 $message->setFigure(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }
