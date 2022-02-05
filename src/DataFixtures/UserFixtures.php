@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use DateTime;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -20,7 +19,7 @@ class UserFixtures extends Fixture
                 ->setUsername($user->getFirstName() . '-' . $user->getLastName())
                 ->setEmail($user->getFirstName() . '.' . $user->getLastName() . '@hotmail.com')
                 ->setPassword("password")
-                ->setPhoto("http://placehold.it/150x150")
+                ->setPhoto("https://loremflickr.com/150/100")
                 ->setVerifiedUser(true)
                 ->setCreatedAt(new \DateTime())
                 ->setUpdatedAt(new \DateTime());
