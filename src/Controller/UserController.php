@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    
     #[Route('/profil', name: 'user')]
     public function show(): Response
     {
