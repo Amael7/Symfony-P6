@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SnowTricks
+{% block title %}SnowTricks figure
 {% endblock %}
 
 {% block body %}
@@ -18,19 +18,17 @@
 	</style>
 
 	<div class="example-wrapper">
-		<h1>Figures</h1>
+		<h1>Figure</h1>
 
 		<ul>
-			{% for figure in figures %}
 				<li>
-					<h2><a href="/figures/{{ figure.id }}">{{ figure.name }}</a></h2>
+					<h2>{{ figure.name }}</h2>
 					<p>{{ figure.description }}</p>
 					<p>Type:
 						{{ figure.type }}</p>
 					<p>Auteur:
 						{{ figure.user.firstName }}</p>
 				</li>
-			{% endfor %}
 		</ul>
 		<section class="figures"></section>
 	</div>
