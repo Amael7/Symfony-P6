@@ -23,11 +23,10 @@
 		<ul>
 			{% for figure in figures %}
 				<li>
-					<h2><a href="/figures/{{ figure.id }}/delete">Supprimer la figure</a></h2>
 					<h2><a href="/figures/{{ figure.id }}">{{ figure.name }}</a></h2>
 					<p>{{ figure.description }}</p>
 					<p>Type:
-						{{ figure.type }}</p>
+						{{ figure.type.title }}</p>
 					<p>Auteur:
 						{{ figure.user.firstName }}</p>
 				</li>

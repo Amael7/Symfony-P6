@@ -2,22 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Entity\Image;
-use App\Entity\Video;
 use App\Entity\Figure;
-use Doctrine\ORM\Mapping\Id;
 use Doctrine\Persistence\ManagerRegistry;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class FigureController extends AbstractController
 {
@@ -98,6 +91,7 @@ class FigureController extends AbstractController
     #[Route("/figures/{id}", name: 'figures_show_{id}')]
     public function show(ManagerRegistry $manager, $id) {
         $figure = $manager->getRepository(Figure::class)->find($id);
+        $user = $this->getUser();
         if (!$figure) {
             throw $this->createNotFoundException(
                 'Aucun figure pour l\'id: ' . $id
@@ -105,6 +99,7 @@ class FigureController extends AbstractController
         }
         return $this->render('figure/show.html.twig', [
             'figure' => $figure,
+            'user' => $user,
         ]);
     }
 

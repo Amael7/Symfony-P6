@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\FigureRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FigureRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: FigureRepository::class)]
 class Figure
@@ -40,7 +40,8 @@ class Figure
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Message::class, orphanRemoval: true)]
     private $messages;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\ManyToOne(targetEntity: FigureType::class, inversedBy: 'figures')]
+    #[ORM\JoinColumn(nullable: false)]
     private $type;
 
     public function __construct()
@@ -205,12 +206,12 @@ class Figure
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?FigureType
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?FigureType $type): self
     {
         $this->type = $type;
 

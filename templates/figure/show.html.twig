@@ -19,13 +19,16 @@
 
 	<div class="example-wrapper">
 		<h1>Figure</h1>
-		<a href="/figures/{{figure.id}}/edit">Editer la figure</a>
+		{% if user.id == figure.user.id %}
+			<a href="/figures/{{figure.id}}/edit">Editer la figure</a>
+			<h2><a href="/figures/{{ figure.id }}/delete">Supprimer la figure</a></h2>
+		{% endif %}
 		<ul>
 				<li>
 					<h2>{{ figure.name }}</h2>
 					<p>{{ figure.description }}</p>
 					<p>Type:
-						{{ figure.type }}</p>
+						{{ figure.type.title }}</p>
 					<p>Auteur:
 						{{ figure.user.firstName }}</p>
 				</li>
