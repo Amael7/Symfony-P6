@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Nouvelle figure
+{% block title %} edition figure
 {% endblock %}
 
 {% block body %}
 
 <div class="">
-    <h1>Mon premier formulaire</h1>
-    <p>creer un article</p>
+    <h1>Mon formulaire d'edition</h1>
+    <p>editer un article</p>
 </div>
 <div class="container">
     <div class="row">
@@ -25,10 +25,6 @@
             <tr>
                 <th>Type:</th>
                 <td>{{ form_widget(form.type) }}</td>
-            </tr>
-            <tr style="display: none;">
-                <th></th>
-                <td>{{ form_widget(form.user) }}</td>
             </tr>
             <tr>
                 <th></th>

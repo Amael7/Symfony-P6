@@ -73,27 +73,26 @@ class FigureController extends AbstractController
                 'Il n\'y a aucune figures avec l\'id suivant: ' . $id
             );
         }
+        $now = new \DateTime();
         $form = $this->createFormBuilder($figure)
-            ->add('Name', TextType::class)
-            ->add('Description', TextType::class)
-            ->add('Type', TextType::class)
-            ->add('Updated_at', HiddenType::class, [
-                'empty_data' => new \DateTime('d/m/Y - H:i:s'),
+            ->add('name')
+            ->add('description')
+            ->add('type')
+            ->add('updatedAt', HiddenType::class, [
+                'data' => $now->format('d/m/Y H:i:s'),
             ])
             ->add('save', SubmitType::class, array('label' => 'Editer'))
             ->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $em = $manager->getManager();
-            // $em = $this->getDoctrine()->getManager();
             $figure = $form->getData();
             $em->flush();
             return $this->redirect($this->generateUrl('figures'));
         }
-        return $this->render(
-            'figures/edit.html.twig',
-            array('form' => $form->createView())
-        );
+        return $this->render('figure/edit.html.twig', [
+                'form' => $form->createView()
+        ]);
     }
 
     #[Route("/figures/{id}", name: 'figures_show_{id}')]
