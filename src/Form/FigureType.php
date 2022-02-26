@@ -20,24 +20,20 @@ class FigureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $now = new \DateTime();
+        
         $builder
             ->add('name', TextType::class)
             ->add('description', TextareaType::class)
             ->add('type', EntityType::class, [
                 'class' => EntityFigureType::class,
             ])
-            ->add('images')
-            ->add('videos')
             ->add('createdAt', HiddenType::class, [
                 'empty_data' => $now->format('d/m/Y H:i:s'),
             ])
             ->add('updatedAt', HiddenType::class, [
             'data' => $now->format('d/m/Y H:i:s'),
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-            ])
-            ->add('save', SubmitType::class, array('label' => 'Créer'));
+            ->add('save', SubmitType::class, array('label' => 'Valider'));
 
     }
 

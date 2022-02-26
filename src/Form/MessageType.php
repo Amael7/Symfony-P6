@@ -16,22 +16,22 @@ class MessageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-      $now = new \DateTime();
-      $builder
-          ->add('content', TextareaType::class)
-          ->add('figure', EntityType::class, [
-              'class' => Figure::class,
-          ])
-          ->add('createdAt', HiddenType::class, [
+        $now = new \DateTime();
+        $builder
+            ->add('content', TextareaType::class)
+            ->add('figure', EntityType::class, [
+                'class' => Figure::class,
+            ])
+            ->add('createdAt', HiddenType::class, [
             'empty_data' => $now->format('d/m/Y H:i:s'),
-          ])
-          ->add('updatedAt', HiddenType::class, [
+            ])
+            ->add('updatedAt', HiddenType::class, [
             'data' => $now->format('d/m/Y H:i:s'),
-          ])
-          ->add('user', EntityType::class, [
-              'class' => User::class,
-          ])
-          ->add('save', SubmitType::class, array('label' => 'Créer'));
+            ])
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+            ])
+            ->add('save', SubmitType::class, array('label' => 'Créer'));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -30,34 +30,11 @@ class FigureController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $figure = new Figure();
         $user = $this->getUser();
-        $now = new \DateTime();
-
-        // $form = $this->createFormBuilder($figure)
-        //     ->add('name')
-        //     ->add('description')
-        //     ->add('type')
-        //     ->add('user', HiddenType::class, [
-        //         'empty_data' => $user,
-        //     ])
-        //     ->add('createdAt', HiddenType::class, [
-        //         'empty_data' => $now->format('d/m/Y H:i:s'),
-        //     ])
-        //     ->add('updatedAt', HiddenType::class, [
-        //         'empty_data' => $now->format('d/m/Y H:i:s'),
-        //     ])
-        //     ->add('save', SubmitType::class, ['label' => 'Valider'])
-        //     ->getForm();
+        
         $form = $this->createForm(FigureType::class, $figure)
             ->add('user', HiddenType::class, [
                 'empty_data' => $user,
-            ])
-            ->add('createdAt', HiddenType::class, [
-                'empty_data' => $now->format('d/m/Y H:i:s'),
-            ])
-            ->add('updatedAt', HiddenType::class, [
-                'empty_data' => $now->format('d/m/Y H:i:s'),
-            ])
-            ->add('save', SubmitType::class, ['label' => 'Valider']);
+            ]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -81,16 +58,8 @@ class FigureController extends AbstractController
                 'Il n\'y a aucune figures avec l\'id suivant: ' . $id
             );
         }
-        $now = new \DateTime();
-        $form = $this->createFormBuilder($figure)
-            ->add('name')
-            ->add('description')
-            ->add('type')
-            ->add('updatedAt', HiddenType::class, [
-                'data' => $now->format('d/m/Y H:i:s'),
-            ])
-            ->add('save', SubmitType::class, array('label' => 'Editer'))
-            ->getForm();
+        $form = $this->createForm(FigureType::class, $figure);
+
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $em = $manager->getManager();
@@ -99,7 +68,7 @@ class FigureController extends AbstractController
             return $this->redirect($this->generateUrl('figure_show', ['id' => $id, 'slug' => $slug]));
         }
         return $this->render('figure/edit.html.twig', [
-                'form' => $form->createView()
+            'form' => $form->createView()
         ]);
     }
 
