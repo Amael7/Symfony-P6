@@ -41,12 +41,13 @@ class FigureFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i <= 9; $i++) {
             $user = $users[rand(0, 6)];
             $figure = new Figure();
+            $now = new \DateTime();
             $figure->setName($figureNames[$i])
                 ->setDescription($figureDescriptions[$i])
                 ->setType($figureTypes[rand(0, 3)])
                 ->setUser($user)
-                ->setCreatedAt(new \DateTime())
-                ->setUpdatedAt(new \DateTime());
+                ->setCreatedAt($now->format('d/m/Y H:i:s'))
+                ->setUpdatedAt($now->format('d/m/Y H:i:s'));
 
             $manager->persist($figure);
         }

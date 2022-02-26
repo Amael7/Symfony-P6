@@ -91,24 +91,24 @@ class Figure
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -216,18 +216,4 @@ class Figure
 
         return $this;
     }
-
-    public function displayCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->getCreatedAt('d/m/Y');
-    }
-
-    public function displayUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->getUpdatedAt('d/m/Y');
-    }
-
-    // public function __toString() {
-    //     return $this->displayCreatedAt();
-    // }
 }

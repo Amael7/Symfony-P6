@@ -34,6 +34,7 @@ class FigureController extends AbstractController
     public function create(ManagerRegistry $manager, Request $request) {
         $figure = new Figure();
         $user = $this->getUser();
+        $now = new \DateTime();
 
         $form = $this->createFormBuilder($figure)
             ->add('name')
@@ -42,12 +43,12 @@ class FigureController extends AbstractController
             ->add('user', HiddenType::class, [
                 'empty_data' => $user,
             ])
-            ->add('createdAt', DateTimeType::class, [
-                'empty_data' => new \DateTime(),
+            ->add('createdAt', HiddenType::class, [
+                'empty_data' => $now->format('d/m/Y H:i:s'),
             ])
-            // ->add('updatedAt', HiddenType::class, [
-            //     'empty_data' => new \DateTime(),
-            // ])
+            ->add('updatedAt', HiddenType::class, [
+                'empty_data' => $now->format('d/m/Y H:i:s'),
+            ])
             ->add('save', SubmitType::class, ['label' => 'Valider'])
             ->getForm();
 
@@ -64,39 +65,6 @@ class FigureController extends AbstractController
         ]);
     }
 
-    // #[Route('/figures/new', name: 'figures_new')]
-    // public function create(ManagerRegistry $manager, Request $request) {
-    //     $figure = new Figure();
-    //     $user = $this->getUser();
-    //     $form = $this->createFormBuilder($figure)
-    //         ->add('name')
-    //         ->add('description')
-    //         ->add('type')
-    //         ->add('createdAt', HiddenType::class, [
-    //             'empty_data' => new \DateTime(),
-    //         ])
-    //         ->add('updatedAt', HiddenType::class, [
-    //             'empty_data' => new \DateTime(),
-    //         ])
-    //         ->add('user', HiddenType::class, [
-    //             'empty_data' => $user,
-    //         ])
-    //         ->add('save', SubmitType::class, ['label' => 'Valider'])
-    //         ->getForm();
-    //         $form->handleRequest($request);
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $figure = $form->getData();
-    //         $em = $manager->getManager();
-    //         // $em = $this->getDoctrine()->getManager();
-    //         $em->persist($figure);
-    //         $em->flush();
-    //         echo 'Envoyé';
-    //     }
-    //     return $this->render('figure/new.html.twig', [
-    //         'form' => $form->createView(),
-    //     ]);
-    // }
-
     #[Route('/figures/{id}/edit', name: 'figures_edit_{id}')]
     public function update(ManagerRegistry $manager, Request $request, $id) {
         $figure = $manager->getRepository(Figure::class)->find($id);
@@ -110,7 +78,7 @@ class FigureController extends AbstractController
             ->add('Description', TextType::class)
             ->add('Type', TextType::class)
             ->add('Updated_at', HiddenType::class, [
-                'empty_data' => new \DateTime(),
+                'empty_data' => new \DateTime('d/m/Y - H:i:s'),
             ])
             ->add('save', SubmitType::class, array('label' => 'Editer'))
             ->getForm();

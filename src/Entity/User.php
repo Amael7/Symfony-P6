@@ -41,18 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json', nullable: true)]
     private $roles;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $token;
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $verifiedUser;
-
-    #[ORM\Column(type: 'datetime', nullable: true, options: ["default" => "CURRENT_TIMESTAMP"])]
-    private $createdAt;
-
-    #[ORM\Column(type: 'datetime', nullable: true, options: ["default" => "CURRENT_TIMESTAMP"])]
-    private $updatedAt;
-
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Figure::class)]
     private $figures;
 
@@ -179,46 +167,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->token = $token;
 
-        return $this;
-    }
-
-    public function getVerifiedUser(): ?bool
-    {
-        return $this->verifiedUser;
-    }
-
-    public function setVerifiedUser(bool $verifiedUser): self
-    {
-        $this->verifiedUser = $verifiedUser;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-        // if (!$this->createdAt) {
-        //     $this->createdAt = new \DateTime();
-        // }
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-        // if (!$this->updatedAt) {
-        //     $this->updatedAt = new \DateTime();
-        // }
         return $this;
     }
 
