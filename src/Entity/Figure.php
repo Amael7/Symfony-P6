@@ -217,4 +217,18 @@ class Figure
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+    
+    public function displayDate()
+    {
+        return substr($this->getCreatedAt(), 0, 10); 
+    }
+
+    public function slug() {
+        return str_replace(' ', '-', $this->getName()) . '-' . str_replace([' ', '/', ':'], '-', $this->displayDate());
+    }
 }
