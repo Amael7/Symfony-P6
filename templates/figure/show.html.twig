@@ -19,9 +19,11 @@
 
 	<div class="example-wrapper">
 		<h1>Figure</h1>
-		{% if user.id == figure.user.id %}
-			<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit">Editer la figure</a>
-			<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/delete">Supprimer la figure</a></h2>
+		{% if app.user %}
+			{% if user.id == figure.user.id %}
+				<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit">Editer la figure</a>
+				<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/delete">Supprimer la figure</a></h2>
+			{% endif %}
 		{% endif %}
 		<ul>
 				<li>
@@ -41,8 +43,10 @@
 		{% if messages %}
 			<ul>
 				{% for message in messages %}
-					{% if user.id == message.user.id %}
-						<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete">Supprimer le message</a></h2>
+					{% if app.user %}
+						{% if user.id == message.user.id %}
+							<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete">Supprimer le message</a></h2>
+						{% endif %}
 					{% endif %}
 					<p>Nom : {{ message.user.fullname }} </p>
 					<p>Contenu : {{ message.content }} </p>

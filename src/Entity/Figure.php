@@ -229,6 +229,6 @@ class Figure
     }
 
     public function slug() {
-        return str_replace(' ', '-', $this->getName()) . '-' . str_replace([' ', '/', ':'], '-', $this->displayDate());
+        return str_replace([' ', '/', ':', '?'], '-', $this->getName()) . '-' . str_replace([' ', '/', ':'], '-', $this->displayDate());
     }
 }

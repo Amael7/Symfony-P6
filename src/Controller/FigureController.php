@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Figure;
 use App\Entity\Message;
+use App\Form\FigureType;
 use App\Form\MessageType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,10 +32,22 @@ class FigureController extends AbstractController
         $user = $this->getUser();
         $now = new \DateTime();
 
-        $form = $this->createFormBuilder($figure)
-            ->add('name')
-            ->add('description')
-            ->add('type')
+        // $form = $this->createFormBuilder($figure)
+        //     ->add('name')
+        //     ->add('description')
+        //     ->add('type')
+        //     ->add('user', HiddenType::class, [
+        //         'empty_data' => $user,
+        //     ])
+        //     ->add('createdAt', HiddenType::class, [
+        //         'empty_data' => $now->format('d/m/Y H:i:s'),
+        //     ])
+        //     ->add('updatedAt', HiddenType::class, [
+        //         'empty_data' => $now->format('d/m/Y H:i:s'),
+        //     ])
+        //     ->add('save', SubmitType::class, ['label' => 'Valider'])
+        //     ->getForm();
+        $form = $this->createForm(FigureType::class, $figure)
             ->add('user', HiddenType::class, [
                 'empty_data' => $user,
             ])
@@ -44,8 +57,7 @@ class FigureController extends AbstractController
             ->add('updatedAt', HiddenType::class, [
                 'empty_data' => $now->format('d/m/Y H:i:s'),
             ])
-            ->add('save', SubmitType::class, ['label' => 'Valider'])
-            ->getForm();
+            ->add('save', SubmitType::class, ['label' => 'Valider']);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
