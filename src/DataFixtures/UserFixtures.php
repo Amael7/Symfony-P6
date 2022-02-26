@@ -19,10 +19,7 @@ class UserFixtures extends Fixture
                 ->setUsername($user->getFirstName() . '-' . $user->getLastName())
                 ->setEmail($user->getFirstName() . '.' . $user->getLastName() . '@hotmail.com')
                 ->setPassword("password")
-                ->setPhoto("https://loremflickr.com/150/100")
-                ->setVerifiedUser(true)
-                ->setCreatedAt(new \DateTime())
-                ->setUpdatedAt(new \DateTime());
+                ->setPhoto("https://loremflickr.com/150/100");
 
             $manager->persist($user);
         }

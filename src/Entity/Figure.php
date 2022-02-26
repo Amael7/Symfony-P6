@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\FigureRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FigureRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: FigureRepository::class)]
 class Figure
@@ -25,10 +25,10 @@ class Figure
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'string')]
     private $createdAt;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'string')]
     private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Image::class, orphanRemoval: true)]
@@ -40,7 +40,8 @@ class Figure
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Message::class, orphanRemoval: true)]
     private $messages;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\ManyToOne(targetEntity: FigureType::class, inversedBy: 'figures')]
+    #[ORM\JoinColumn(nullable: false)]
     private $type;
 
     public function __construct()
@@ -91,24 +92,24 @@ class Figure
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?string
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    public function setCreatedAt(string $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?string
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(string $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -205,12 +206,12 @@ class Figure
         return $this;
     }
 
-    public function getType(): ?string
+    public function getType(): ?FigureType
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?FigureType $type): self
     {
         $this->type = $type;
 

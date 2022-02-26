@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use App\Entity\Figure;
+use App\Entity\FigureType;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -13,6 +14,7 @@ class FigureFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
+            FigureTypeFixtures::class,
             UserFixtures::class,
         ];
     }
@@ -36,26 +38,26 @@ class FigureFixtures extends Fixture implements DependentFixtureInterface
             "deux tours et demi",
             "saisie de la partie avant de la planche, avec la main avant"
         ];
-        $figureTypes = ["Flip", "Grab", "Rotation", "Jump"];
+        $figureTypes = $manager->getRepository(FigureType::class)->findAll();
         $users = $manager->getRepository(User::class)->findAll();
+        
         for ($i = 0; $i <= 9; $i++) {
             $user = $users[rand(0, 6)];
             $figure = new Figure();
+            $now = new \DateTime();
             $figure->setName($figureNames[$i])
                 ->setDescription($figureDescriptions[$i])
-                ->setType($figureTypes[rand(0, 3)])
+                ->setType($figureTypes[rand(0, 4)])
                 ->setUser($user)
-                ->setCreatedAt(new \DateTime())
-                ->setUpdatedAt(new \DateTime());
-
+                ->setCreatedAt($now->format('d/m/Y H:i:s'))
+                ->setUpdatedAt($now->format('d/m/Y H:i:s'));
             $manager->persist($figure);
         }
-
         $manager->flush();
     }
 
     public function getOrder()
     {
-        return 2; // the order in which fixtures will be loaded
+        return 3; // the order in which fixtures will be loaded
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
@@ -10,9 +9,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-
 /**
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"username"}, message="Il existe déjà un compte avec ce username")
  */
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -42,18 +40,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'json', nullable: true)]
     private $roles;
-
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $token;
-
-    #[ORM\Column(type: 'boolean', nullable: true)]
-    private $verifiedUser;
-
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $createdAt;
-
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Figure::class)]
     private $figures;
@@ -184,46 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getVerifiedUser(): ?bool
-    {
-        return $this->verifiedUser;
-    }
-
-    public function setVerifiedUser(bool $verifiedUser): self
-    {
-        $this->verifiedUser = $verifiedUser;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeInterface
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-        // if (!$this->createdAt) {
-        //     $this->createdAt = new \DateTime();
-        // }
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeInterface
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
-        // if (!$this->updatedAt) {
-        //     $this->updatedAt = new \DateTime();
-        // }
-        return $this;
-    }
-
     /**
      * The public representation of the user (e.g. a username, an email address, etc.)
      *
@@ -328,5 +274,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function fullname(): ?string
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function __toString()
+    {
+        return $this->fullname();
     }
 }

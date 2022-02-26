@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} edition figure
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+    <h1>Mon formulaire d'edition</h1>
+    <p>editer un article</p>
+</div>
+<div class="container">
+    <div class="row">
+        {{ form_start(form) }}
+        <table>
+            <tbody>
+            <tr>
+                <th>Name:</th>
+                <td>{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}</td>
+            </tr>
+            <tr>
+                <th>Type:</th>
+                <td>{{ form_widget(form.type) }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>{{ form_widget(form.save) }}</td>
+            </tr>
+            </tbody>
+        </table>
+        {{ form_end(form) }}
+    </div>
+</div>
+  {# {{ form(form) }} #}
+
+{% endblock %}
