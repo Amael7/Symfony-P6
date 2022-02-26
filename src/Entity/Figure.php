@@ -25,10 +25,10 @@ class Figure
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'string')]
     private $createdAt;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'string')]
     private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Image::class, orphanRemoval: true)]
@@ -216,4 +216,18 @@ class Figure
 
         return $this;
     }
+
+    public function displayCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->getCreatedAt('d/m/Y');
+    }
+
+    public function displayUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->getUpdatedAt('d/m/Y');
+    }
+
+    // public function __toString() {
+    //     return $this->displayCreatedAt();
+    // }
 }

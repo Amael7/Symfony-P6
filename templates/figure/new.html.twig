@@ -1,1 +1,53 @@
-{{ form(form) }}
+{% extends 'base.html.twig' %}
+
+{% block title %} Nouvelle figure
+{% endblock %}
+
+{% block body %}
+
+<div class="">
+    <h1>Mon premier formulaire</h1>
+    <p>creer un article</p>
+</div>
+<div class="container">
+    <div class="row">
+        {{ form_start(form) }}
+        <table>
+            <tbody>
+            <tr>
+                <th>Name:</th>
+                <td>{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td>{{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}</td>
+            </tr>
+            <tr>
+                <th>Type:</th>
+                <td>{{ form_widget(form.type, {'attr': {'placeholder': "Type de la figure"}}) }}</td>
+            </tr>
+            <tr style="display: none;">
+                <th></th>
+                <td>{{ form_widget(form.user) }}</td>
+            </tr>
+            
+            <tr style="display: none;">
+                <th></th>
+                <td>{{ form_widget(form.createdAt) }}</td>
+            </tr>
+            <tr style="display: none;">
+                <th></th>
+                <td>{{ form_widget(form.updatedAt) }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>{{ form_widget(form.save) }}</td>
+            </tr>
+            </tbody>
+        </table>
+        {{ form_end(form) }}
+    </div>
+</div>
+  {# {{ form(form) }} #}
+
+{% endblock %}
