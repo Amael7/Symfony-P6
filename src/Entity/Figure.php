@@ -15,7 +15,7 @@ class Figure
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, unique: true)]
     private $name;
 
     #[ORM\Column(type: 'text')]
@@ -216,5 +216,19 @@ class Figure
         $this->type = $type;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+    
+    public function displayDate()
+    {
+        return substr($this->getCreatedAt(), 0, 10); 
+    }
+
+    public function slug() {
+        return str_replace([' ', '/', ':', '?'], '-', $this->getName()) . '-' . str_replace([' ', '/', ':'], '-', $this->displayDate());
     }
 }
