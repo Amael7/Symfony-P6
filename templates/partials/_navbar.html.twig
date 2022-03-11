@@ -1,0 +1,13 @@
+<div class="navbar">
+  <ul>
+    <li><a href="/">home</a></li>
+    {% if app.user %}
+      <li><a href="/profil">profil</a></li>
+      <li><a href="/figure/new">Créer une figures</a></li>
+      <li><a href="/logout">déconnexion</a></li>
+    {% else %}
+      <li><a href="/login">connexion</a></li>
+      <li><a href="/register">inscription</a></li>
+    {% endif %}
+  </ul>
+</div>

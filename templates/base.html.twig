@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Bienvenue!
 			{% endblock %}
 		</title>
 		<link
@@ -18,21 +18,11 @@
 		{% endblock %}
 	</head>
 	<body>
-
-		<div class="navbar">
-			<ul>
-				<li><a href="/">home</a></li>
-				{% if app.user %}
-					<li><a href="/profil">profil</a></li>
-					<li><a href="/figure/new">Créer une figures</a></li>
-					<li><a href="/logout">déconnexion</a></li>
-				{% else %}
-					<li><a href="/login">connexion</a></li>
-					<li><a href="/register">inscription</a></li>
-				{% endif %}
-			</ul>
+		<div class="layout-wrap">
+			<div class="layout-navbar">
+				{{ include('partials/_navbar.html.twig') }}
+			</div>
+			{% block body %}{% endblock %}
 		</div>
-
-		{% block body %}{% endblock %}
 	</body>
 </html>
