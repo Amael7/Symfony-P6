@@ -1,0 +1,38 @@
+.layout-navbar-wrapper {
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 70px;
+  padding: 0px 15px;
+  background: #FFFFFF;
+  border-bottom: 1px solid #f5f6fa;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+}
+
+.navbar-logo a:hover {
+  text-decoration: none;
+  color: #212529;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links ul, li {
+  display: inline-block;
+}
+
+.navbar-links a {
+  padding-right: 15px;
+}

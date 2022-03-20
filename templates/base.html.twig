@@ -18,11 +18,16 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div class="layout-wrap">
-			<div class="layout-navbar">
+		<div class="layout-wrapper">
+			<div class="layout-navbar-wrapper">
 				{{ include('partials/_navbar.html.twig') }}
 			</div>
+
 			{% block body %}{% endblock %}
+
+			<footer>
+				<p>Tous droits réservés © Montoro Stéphane</p>
+			</footer>
 		</div>
 	</body>
 </html>

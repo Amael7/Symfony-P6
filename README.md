@@ -11,6 +11,7 @@ Développez de A à Z le site communautaire SnowTricks
 - mysql 5.7
 - Symfony CLI version 5.3.0
 - Composer version 2.2.5
+- Node v16.14.2
 
 ### Installation
 

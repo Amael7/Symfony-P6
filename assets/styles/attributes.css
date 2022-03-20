@@ -1,0 +1,26 @@
+/* Font Weight */
+.font-weight-500 {
+  font-weight: 500;
+}
+/* Font Weight End */
+
+.relative {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Padding */
+.pd-xs {
+  padding: 5px;
+}
+
+.pd-s {
+  padding: 10px;
+}
+/* Padding End */
