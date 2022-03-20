@@ -24,3 +24,17 @@
   padding: 10px;
 }
 /* Padding End */
+
+/* Margin */
+.mg-top-xl {
+  margin-top: 40px;
+} 
+
+.mg-bottom-xl {
+  margin-bottom: 40px;
+}
+/* Margin End */
+
+.width-80 {
+  width: 80%;
+}
