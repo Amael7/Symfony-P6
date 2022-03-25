@@ -18,14 +18,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  flex-grow:100%
 }
 
 .figure-box {
   flex-grow: 1;
-  max-width: 18%;
   height: 200px;
-  width: 18%;
+  max-width: calc(20% - 22px);
+  width: calc(20% - 22px);
   border: 1px solid #212529;
   border-radius: 4px;
   margin: 10px;
