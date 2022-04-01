@@ -37,3 +37,9 @@ Développez de A à Z le site communautaire SnowTricks
 6.Implementez les fixtures :
 
          php bin/console doctrine:fixtures:load
+         
+7.Lancer les serveur :
+  
+         symfony serve
+         yarn dev-server
+         mailhog (Pour la réception de mail en local)
