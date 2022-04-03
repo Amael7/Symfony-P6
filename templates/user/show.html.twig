@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
-<div class="content-container">
-  <h1 class="mg-top-xl mg-bottom-xl">Profil : {{ user.fullname }} </h1>
-  <div class="example-wrapper">
-    <div>
-      <img src="" alt="">
+<div class="content-container text-left">
+  <div class="header-profil">
+    <div class="mg-left-xl">
+      <h1 class="mg-bottom-xl">Mon Profil</h1>
+      <p><a href="/profil/edit">Editer mon profil</a></p>
+      <p class="mg-bottom-l"><a href="/reset-password">Modifier mon mot de passe</a></p>
+      <h3>Username : <span>{{ user.username }}</span></h3>
+      <h3>Nom : <span>{{ user.lastname }}</span></h3>
+      <h3>Prénom : <span>{{ user.firstname }}</span></h3>
+      <h3>Email : <span>{{ user.email }}</span></h3>
     </div>
-    <p>username : {{ user.username }}</p>
-    <p>email : {{ user.email }}</p>
-    <img src="{{ user.photo }}" alt="photo de profil">
+    <div class="profil_picture mg-right-xl" style="background-image: url('{{ user.photo }}')"></div>
   </div>
 </div>
 {% endblock %}

@@ -125,3 +125,22 @@
 }
 
 /* Form End */
+
+.profil_picture {
+  height: 250px;
+  width: 250px;
+  object-fit: contain;
+  border: 1px solid green;
+}
+
+.header-profil {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.inline-block {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}

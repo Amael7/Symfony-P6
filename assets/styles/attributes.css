@@ -19,6 +19,10 @@
   transform: translate(-50%, -50%);
 }
 
+.text-left {
+  text-align: left;
+} 
+
 /* Padding */
 .pd-xs {
   padding: 5px;
@@ -45,6 +49,23 @@
 .mg-bottom-xl {
   margin-bottom: 40px;
 }
+
+.mg-bottom-l {
+  margin-bottom: 20px;
+}
+
+.mg-bottom-xl {
+  margin-bottom: 40px;
+}
+
+.mg-left-xl {
+  margin-left: 40px;
+}
+
+.mg-right-xl {
+  margin-right: 40px;
+}
+
 /* Margin End */
 
 .width-80 {
