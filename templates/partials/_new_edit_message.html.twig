@@ -1,16 +1,11 @@
-<div class="container">
-    <h3>creer un message</h3>
+<div class="form-message-box">
     <div class="row">
         {{ form_start(form) }}
         <table>
             <tbody>
             <tr>
-                <th>Message:</th>
-                <td>{{ form_widget(form.content, {'attr': {'placeholder': "Contenu du message"}}) }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ form_widget(form.save) }}</td>
+                <td class="message-txt-area">{{ form_widget(form.content, {'attr': {'placeholder': "Contenu du message"}}) }} </td>
+                <td class="vertical-align-top">{{ form_widget(form.save) }}</td>
             </tr>
             </tbody>
         </table>

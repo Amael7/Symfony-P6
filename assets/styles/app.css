@@ -14,6 +14,16 @@
 }
 
 /* Figure */
+.header-figure {
+  z-index: 20;
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  position: relative;
+  border: 1px solid red;
+  background-size: cover;
+}
+
 .figures-container {
   width: 100%;
   display: flex;
@@ -69,10 +79,141 @@
   color: #212529;
 }
 
+.figure-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8%;
+  height: 40px;
+  z-index: 40;
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid red;
+}
+
 .figure-link {
   width: 20%;
 }
+
+.figure-link img {
+  vertical-align: middle;
+}
+
+.medias-box {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid yellow;
+}
+
+.media-container {
+  width: 200px;
+  height: 150px;
+  padding: 5px;
+}
+
+.media-container:first-child {
+  padding-left: 15px;
+}
+
+.media-container img, video {
+  width: 200px;
+  height: 150px;
+}
+
+.figure-details {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.figure-description {
+  margin-top: 40px;
+  margin-bottom: 40px
+}
+
+.info-list {
+  display: inline-block;
+}
+
+.info-list li {
+  border: 1px solid #212529;
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.messages {
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.user-profil {
+  display: flex;
+  align-items: top;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.user-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-data {
+  padding-left: 20px;
+}
+
+.message-box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.message-content {
+  border: 1px solid #212529;
+  border-radius: 4px;
+  background-color: #f5f6fa;
+  width: 95%;
+  text-align: left;
+}
+
+.message-content p {
+  padding: 10px;
+}
+
+.message-container {
+  width: 70%;
+  margin: 0 auto;
+  border-top: 1px solid #212529;
+}
+
+.new-message-box {
+  text-align: -webkit-center;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #212529;
+}
+
+.message-txt-area textarea {
+  width: 300px;
+}
+
+.message-delete {
+  width: 16px;
+}
+
+.message {
+  display: flex;
+}
 /* Figure End */
+
+.form-message-box button {
+  padding: 9px;
+}
+
 
 /* Form */
 

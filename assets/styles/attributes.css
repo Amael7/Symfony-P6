@@ -8,6 +8,10 @@
 }
 /* Font End */
 
+.vertical-align-top {
+  vertical-align: top;
+}
+
 .relative {
   position: relative;
 }

@@ -31,7 +31,7 @@ class MessageType extends AbstractType
             ->add('user', EntityType::class, [
                 'class' => User::class,
             ])
-            ->add('save', SubmitType::class, array('label' => 'Créer'));
+            ->add('save', SubmitType::class, array('label' => 'Créer un commentaire'));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -4,60 +4,89 @@
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 95%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
 
-	<div class="example-wrapper">
-		<h1>Figure</h1>
-		{% if app.user %}
-			{% if user.id == figure.user.id %}
-				<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit">Editer la figure</a>
-				<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/delete">Supprimer la figure</a></h2>
+<div class="content-container">
+	<div class="header-figure" style="background-image: url({{ figure.images|first }});">
+		<div class="figure-actions">
+			{% if app.user %}
+				{% if app.user.id == figure.user.id %}
+					<div class="figure-link pd-xs">
+						<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('png/pencil-solid.svg') }}" alt="edit figure"></a>
+					</div>
+					<div class="figure-link pd-xs">
+						<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('png/trash-can-solid.svg') }}" alt="delete figure"></a>
+					</div>
+				{% endif %}
 			{% endif %}
-		{% endif %}
-		<ul>
-				<li>
-					<h2>{{ figure.name }}</h2>
-					<p>{{ figure.description }}</p>
-					<p>Type:
-						{{ figure.type.title }}</p>
-					<p>Auteur:
-						{{ figure.user.firstName }}</p>
-				</li>
-		</ul>
-		<section class="figures"></section>
+		</div>
+		<h1 class="mg-bottom-xl center">{{ figure.name }}</h1>
 	</div>
-
-	<div>
-		<h1>Section Message</h1>
-		{% if messages %}
-			<ul>
-				{% for message in messages %}
-					{% if app.user %}
-						{% if user.id == message.user.id %}
-							<h2><a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete">Supprimer le message</a></h2>
-						{% endif %}
-					{% endif %}
-					<p>Nom : {{ message.user.fullname }} </p>
-					<p>Contenu : {{ message.content }} </p>
-					<p>Date : {{ message.createdAt }} </p>
-				{% endfor %}
-			</ul>
-		{% endif %}
-	</div>
-
-	{% if app.user %}
-		{{ include('partials/_new_edit_message.html.twig') }}
+	{% if figure.images|length >= 1 or figure.videos|length >= 1 %}
+		<div class="medias-box">
+			{% for image in figure.images %}
+				<div class="media-container">
+					<img src="{{image}}" alt="media">
+				</div>
+			{% endfor %}
+			{% for video in figure.videos %}
+				<div class="media-container">
+					<video controls width="250">
+						<source src={{video.url}} type="video/webm">
+					</video>
+				</div>
+			{% endfor %}
+		</div>
 	{% endif %}
+
+	<div class="figure-details">
+		<div class="figure-description">
+			<p>{{ figure.description }}</p>
+		</div>
+		<ul class="info-list">
+			<li>
+				<p>Type: {{ figure.type.title }}</p>
+			</li>
+			<li>
+				<p>Auteur: {{ figure.user.firstName }}</p>
+			</li>
+		</ul>
+	</div>
+
+	<div class="message-container">
+		{% if app.user %}
+			<div class="new-message-box">
+				{{ include('partials/_new_edit_message.html.twig') }}
+			</div>
+		{% endif %}
+
+		{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+					<div class="message-box">
+						<div class="user-profil">
+							<img class="user-picture" src="{{ message.user.photo }}" alt="photo de profil">
+							<div class="user-data">
+								<p>{{ message.user.fullname }} </p>
+								<p>{{ message.createdAt }} </p>
+							</div>
+						</div>
+						<div class="message">
+							<div class="message-content">
+								<p>{{ message.content }}</p>
+							</div>
+							{% if app.user %}
+								{% if user.id == message.user.id %}
+									<div class="message-delete pd-xs">
+										<a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete"><img src="{{ asset('png/trash-can-solid.svg') }}" alt="delete message"></a>
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+</div>
 
 {% endblock %}
