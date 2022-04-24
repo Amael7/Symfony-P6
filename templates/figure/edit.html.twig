@@ -1,40 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} edition figure
+{% block title %} Editer la figure
 {% endblock %}
 
 {% block body %}
 
-<div class="">
-    <h1>Mon formulaire d'edition</h1>
-    <p>editer un article</p>
-</div>
-<div class="container">
-    <div class="row">
-        {{ form_start(form) }}
-        <table>
-            <tbody>
-            <tr>
-                <th>Name:</th>
-                <td>{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}</td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td>{{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}</td>
-            </tr>
-            <tr>
-                <th>Type:</th>
-                <td>{{ form_widget(form.type) }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ form_widget(form.save) }}</td>
-            </tr>
-            </tbody>
-        </table>
-        {{ form_end(form) }}
+<div class="content-container">
+	<div class="header-figure" style="background-image: url({{ asset('images/default_picture.jpeg') }});">
+		<h1 class="mg-bottom-xl center txt-white">Nom de la figure</h1>
+	</div>
+  <div class="medias-box">
+    <div class="media-container">
+      <img src="{{asset('images/default_picture.jpeg')}}" alt="media">
     </div>
-</div>
-  {# {{ form(form) }} #}
+    <div class="media-container">
+      <video controls width="250">
+        <source src="{{asset('images/default_picture.jpeg')}}" type="video/webm">
+      </video>
+    </div>
+  </div>
 
+	<div class="content-container">
+		{% for flashError in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+		{% endfor %}
+
+		<div class="form-container width-80 text-align-left">
+			{{ form_start(form) }}
+				<div class="row form-fig-name">
+					{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}
+				</div>
+				<div class="row form-fig-description">
+          {{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}
+				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.type) }}
+				</div>
+				<div class="row form-fig-button">
+          {{ form_widget(form.save) }}
+				</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+</div>
 {% endblock %}
