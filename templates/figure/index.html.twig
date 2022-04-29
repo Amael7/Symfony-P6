@@ -4,12 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<div id="banner">
-		<img src="{{ asset('images/banner.jpeg') }}" alt="banner">
+	<div id="banner" style="background-image: url({{ asset('images/banner.jpeg') }})">
+		<a class="anchor --to_down" href="#Anchor"><i class="fa-regular fa-arrow-down">flèche</i></a>
 	</div>
 
 	<div class="content-container">
-		<div class="figures-container">
+		<div id="Anchor" class="figures-container">
 			{% for figure in figures %}
 				<div class="figure-box">
 					<div class="figure-background">
@@ -33,5 +33,7 @@
 				</div>
 			{% endfor %}
 		</div>
+		<button class="btn js-load-more">Charger plus</button>
+		<a class="anchor --to_up" href="#Anchor"><i class="fa-regular fa-arrow-up">flèche</i></a>
 	</div>
 {% endblock %}

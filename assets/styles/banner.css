@@ -1,5 +1,22 @@
-#banner img {
+#banner {
   object-fit: cover;
   width: 100%;
-  height: 500px;
+  height: 93vh;
+  position: relative;
+  /* top: 0; */
+}
+
+.anchor {
+  border: 2px solid green;
+  position: absolute;
+}
+
+.--to_up {
+  bottom: 60px;
+  right: 20px;
+}
+
+.--to_down {
+  bottom: 30px;
+  right: 20px;
 }

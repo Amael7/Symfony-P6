@@ -1,4 +1,5 @@
 .layout-wrapper {
+  position: relative;
   height: 100%;
   padding-bottom: 3rem;
 }
@@ -322,4 +323,16 @@
   display: flex;
   justify-content: space-between;
   vertical-align: middle;
+}
+
+/* Responsive layout - makes a one column layout instead of a two-column layout */
+@media (max-width: 800px) {
+  .figures-container {
+    flex-direction: column;
+  }
+
+  .figure-box {
+    width: 95%;
+    max-width: 95%; 
+  }
 }
