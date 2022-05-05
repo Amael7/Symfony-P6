@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Figure;
+use App\Entity\Image;
 use App\Entity\Message;
 use App\Form\FigureType;
 use App\Form\MessageType;
@@ -13,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FigureController extends AbstractController
 {
@@ -38,6 +40,24 @@ class FigureController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // on récupère les images transmises
+            $images = $form->get('images')->getData();
+            // On boucle sur les images
+            foreach($images as $image){
+                // On génère un nouveau nom de fichier
+                $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+                // on va copier le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+
+                // on stocke l'image dans la DB (son nom)
+                $img = new Image();
+                $img->setName($fileName);
+                $figure->addImage($img);
+            }
+
             $figure = $form->getData();
             $em = $manager->getManager();
             $em->persist($figure);
@@ -46,6 +66,7 @@ class FigureController extends AbstractController
         }
         return $this->render('figure/new.html.twig', [
             'form' => $form->createView(),
+            'figure' => $figure
         ]);
     }
 
@@ -62,13 +83,32 @@ class FigureController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
+            // on récupère les images transmises
+            $images = $form->get('images')->getData();
+            // On boucle sur les images
+            foreach($images as $image){
+                // On génère un nouveau nom de fichier
+                $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+                // on va copier le fichier dans le dossier uploads
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fileName
+                );
+
+                // on stocke l'image dans la DB (son nom)
+                $img = new Image();
+                $img->setName($fileName);
+                $figure->addImage($img);
+            }
+
             $em = $manager->getManager();
             $figure = $form->getData();
             $em->flush();
             return $this->redirect($this->generateUrl('figure_show', ['id' => $id, 'slug' => $slug]));
         }
         return $this->render('figure/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'figure' => $figure
         ]);
     }
 
@@ -126,5 +166,23 @@ class FigureController extends AbstractController
         $em->remove($figure);
         $em->flush();
         return $this->redirect($this->generateUrl('figures'));
+    }
+
+    #[Route("/delete/image/{id}", name: 'figure_delete_image', methods: ["DELETE"])]
+    public function deleteImage(Image $image, ManagerRegistry $manager, Request $request) {
+        $data = json_decode($request->getContent(), true);
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$image->getId(), $data['_token'])) {
+            $fileName = $image->getName();
+            unlink($this->getParameter('images_directory') . '/' . $fileName);
+
+            $em = $manager->getManager();
+            $em->remove($image);
+            $em->flush();
+
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
     }
 }

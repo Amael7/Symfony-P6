@@ -92,6 +92,8 @@
   display: flex;
   justify-content: space-around;
   border: 1px solid red;
+  background-color: #e1e2e6;
+  border-radius: 1px;
 }
 
 .figure-link {
@@ -124,6 +126,7 @@
 .media-container img, video {
   width: 200px;
   height: 150px;
+  object-fit: cover;
 }
 
 .figure-details {

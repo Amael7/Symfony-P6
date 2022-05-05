@@ -6,7 +6,7 @@
 {% block body %}
 
 <div class="content-container">
-	<div class="header-figure" style="background-image: url({{ figure.images|first }});">
+	<div class="header-figure" style="background-image: url({{ asset("uploads/" ~ figure.images|first) }});">
 		<div class="figure-actions">
 			{% if app.user %}
 				{% if app.user.id == figure.user.id %}
@@ -25,7 +25,7 @@
 		<div class="medias-box">
 			{% for image in figure.images %}
 				<div class="media-container">
-					<img src="{{image}}" alt="media">
+					<img src="{{ asset("uploads/" ~ image) }}" alt="figure image">
 				</div>
 			{% endfor %}
 			{% for video in figure.videos %}

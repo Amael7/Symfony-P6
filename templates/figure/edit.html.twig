@@ -6,19 +6,26 @@
 {% block body %}
 
 <div class="content-container">
-	<div class="header-figure" style="background-image: url({{ asset('images/default_picture.jpeg') }});">
+	<div class="header-figure" style="background-image: url({{ asset("uploads/" ~ figure.images|first) }});">
 		<h1 class="mg-bottom-xl center txt-white">Nom de la figure</h1>
 	</div>
-  <div class="medias-box">
-    <div class="media-container">
-      <img src="{{asset('images/default_picture.jpeg')}}" alt="media">
-    </div>
-    <div class="media-container">
-      <video controls width="250">
-        <source src="{{asset('images/default_picture.jpeg')}}" type="video/webm">
-      </video>
-    </div>
-  </div>
+	{% if figure.images|length >= 1 or figure.videos|length >= 1 %}
+		<div class="medias-box">
+			{% for image in figure.images %}
+				<div class="media-container">
+					<img src="{{ asset("uploads/" ~ image) }}" alt="image">
+					<a href="{{ path('figure_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" >Supprimer</a>
+				</div>
+			{% endfor %}
+			{% for video in figure.videos %}
+				<div class="media-container">
+					<video controls width="250">
+						<source src="{{video.url}}" type="video/webm">
+					</video>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
 
 	<div class="content-container">
 		{% for flashError in app.flashes('verify_email_error') %}
@@ -36,6 +43,9 @@
 				<div class="row form-fig-type">
           {{ form_widget(form.type) }}
 				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.images) }}
+				</div>
 				<div class="row form-fig-button">
           {{ form_widget(form.save) }}
 				</div>
@@ -43,4 +53,8 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/images.js') }}"></script>
 {% endblock %}

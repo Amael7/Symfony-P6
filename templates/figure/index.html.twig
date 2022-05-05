@@ -13,7 +13,7 @@
 			{% for figure in figures %}
 				<div class="figure-box">
 					<div class="figure-background">
-						<img src="{{ figure.images|first }}" alt="figure image">
+						<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="figure image">
 					</div>
 					<div class="figure-content">
 						<div class="figure-title pd-xs">
