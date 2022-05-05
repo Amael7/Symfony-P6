@@ -1,5 +1,5 @@
 .layout-wrapper {
-  position: relative;
+  /* position: relative; */
   height: 100%;
   padding-bottom: 3rem;
 }
@@ -325,7 +325,10 @@
   vertical-align: middle;
 }
 
-/* Responsive layout - makes a one column layout instead of a two-column layout */
+/* Responsive layout */
+
+
+
 @media (max-width: 800px) {
   .figures-container {
     flex-direction: column;
@@ -334,5 +337,42 @@
   .figure-box {
     width: 95%;
     max-width: 95%; 
+  }
+}
+
+/******************** Media Queries ********************/
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+  html,
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (max-width: 992px) {
+
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (max-width: 767px) {
+
+}
+
+/* small devices (mobile, 576px and up)*/
+@media (max-width: 576px) {
+  .layout-navbar-wrapper {
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    min-height: 70px;
+    max-height: 10vh;
+    padding: 0px 15px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #f5f6fa;
   }
 }
