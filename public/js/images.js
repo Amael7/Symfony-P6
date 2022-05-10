@@ -25,6 +25,7 @@ window.onload = () => {
         ).then(data => {
           if(data.success) {
             this.parentElement.remove()
+            location.reload();
           } else {
             alert(data.error)
           }

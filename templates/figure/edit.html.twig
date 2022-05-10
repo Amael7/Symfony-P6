@@ -14,7 +14,9 @@
 			{% for image in figure.images %}
 				<div class="media-container">
 					<img src="{{ asset("uploads/" ~ image) }}" alt="image">
-					<a href="{{ path('figure_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" >Supprimer</a>
+					{% if figure.images.count > 1 %}
+						<a href="{{ path('figure_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" >Supprimer</a>
+					{% endif %}
 				</div>
 			{% endfor %}
 			{% for video in figure.videos %}
