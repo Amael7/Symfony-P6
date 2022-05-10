@@ -7,8 +7,11 @@
 }
 
 .anchor {
-  border: 2px solid green;
   position: absolute;
+}
+
+.anchor img {
+  width: 25px;
 }
 
 .--to_up {
@@ -19,4 +22,8 @@
 .--to_down {
   bottom: 30px;
   right: 20px;
+}
+
+.arrow-inversed {
+  transform:rotate(180deg);
 }
