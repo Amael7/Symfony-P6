@@ -49,6 +49,7 @@
           {{ form_widget(form.images) }}
 				</div>
 				<div class="row form-fig-button">
+					<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete" class="btn btn-red">Supprimer</a>
           {{ form_widget(form.save) }}
 				</div>
 			{{ form_end(form) }}
