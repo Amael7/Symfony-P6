@@ -188,7 +188,7 @@
 }
 
 .message-container {
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   border-top: 1px solid #212529;
 }
@@ -222,7 +222,7 @@
 
 .form-container {
   border-radius: 2px;
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
@@ -236,6 +236,11 @@
   padding: 8px 16px;
   border: 1px solid #e1e2e6;
   border-radius: 4px;
+  width: 60%;
+}
+
+.checkbox input {
+  width: auto;
 }
 
 .btn {
@@ -352,16 +357,26 @@
     font-size: 15px;
     line-height: 1.5;
   }
+
+  .form-container input, textarea {
+    width: 100%;
+  }
+
+  .checkbox input {
+    width: auto;
+  }
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media (max-width: 992px) {
-
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (max-width: 767px) {
-
+  .profil-informations {
+    margin-left: 0px;
+    margin-top: 20px
+  }
 }
 
 /* small devices (mobile, 576px and up)*/
@@ -377,10 +392,5 @@
     padding: 0px 15px;
     background: #FFFFFF;
     border-bottom: 1px solid #f5f6fa;
-  }
-
-  .profil-informations {
-    margin-left: 0px;
-    margin-top: 20px
   }
 }
