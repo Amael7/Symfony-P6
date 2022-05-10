@@ -11,10 +11,10 @@
 			{% if app.user %}
 				{% if app.user.id == figure.user.id %}
 					<div class="figure-link pd-xs">
-						<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('png/pencil-solid.svg') }}" alt="edit figure"></a>
+						<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
 					</div>
 					<div class="figure-link pd-xs">
-						<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('png/trash-can-solid.svg') }}" alt="delete figure"></a>
+						<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
 					</div>
 				{% endif %}
 			{% endif %}
@@ -77,7 +77,7 @@
 							{% if app.user %}
 								{% if user.id == message.user.id %}
 									<div class="message-delete pd-xs">
-										<a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete"><img src="{{ asset('png/trash-can-solid.svg') }}" alt="delete message"></a>
+										<a href="/figures/{{ figure.id }}/{{ figure.slug }}/message/{{ message.id }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete message"></a>
 									</div>
 								{% endif %}
 							{% endif %}
