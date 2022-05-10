@@ -199,8 +199,8 @@
   padding-bottom: 15px;
 }
 
-.message-txt-area textarea {
-  width: 300px;
+.message-input textarea {
+  width: 80%;
 }
 
 .message-delete {
