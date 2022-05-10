@@ -308,13 +308,17 @@
   height: 250px;
   width: 250px;
   object-fit: contain;
-  border: 1px solid green;
 }
 
 .header-profil {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: left;
   margin-bottom: 25px;
+}
+
+.profil-informations {
+  margin-left: 40px;
 }
 
 .inline-block {
@@ -372,5 +376,10 @@
     padding: 0px 15px;
     background: #FFFFFF;
     border-bottom: 1px solid #f5f6fa;
+  }
+
+  .profil-informations {
+    margin-left: 0px;
+    margin-top: 20px
   }
 }
