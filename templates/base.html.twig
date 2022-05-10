@@ -12,10 +12,6 @@
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
 	</head>
 	<body>
 		<div class="layout-wrapper">
@@ -30,4 +26,9 @@
 			</footer>
 		</div>
 	</body>
+
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		<script src="{{ asset('js/images.js') }}"></script>
+	{% endblock %}
 </html>

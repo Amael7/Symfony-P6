@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Figure;
 use App\Entity\Image;
+use App\Entity\Video;
+use App\Entity\Figure;
 use App\Entity\Message;
 use App\Form\FigureType;
 use App\Form\MessageType;
@@ -11,10 +12,10 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class FigureController extends AbstractController
 {
@@ -57,6 +58,20 @@ class FigureController extends AbstractController
                 $img->setName($fileName);
                 $figure->addImage($img);
             }
+
+            // on récupère les videos transmises
+            // $videos = $form->get('videos')->getData();
+            // On boucle sur les videos
+            // foreach($videos as $video){
+            //     // on stocke l'url de la video dans la DB
+            //     $vid = new Video();
+            //     $vid->setUrl($video->getUrl());
+            //     $figure->addVideo($vid);
+            // }
+                // on stocke l'url de la video dans la DB
+                // $vid = new Video();
+                // $vid->setUrl($videos);
+                // $figure->addVideo($vid);
 
             $figure = $form->getData();
             $em = $manager->getManager();
