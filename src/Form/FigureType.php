@@ -10,11 +10,13 @@ use App\Entity\FigureType as EntityFigureType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class FigureType extends AbstractType
 {
@@ -42,6 +44,11 @@ class FigureType extends AbstractType
                 'invalid_message' => "Veuillez choisir une photo au minimum.",
                 'attr' => ['placeholder' => "Fichier de l'image"]
             ])
+            // ->add('videos', CollectionType::class, [
+            //     'entry_type' => VideoType::class,
+            //     'allow_add' => true,
+            //     'allow_delete' => true
+            // ])
             ->add('save', SubmitType::class, array('label' => 'Valider'));
 
     }
