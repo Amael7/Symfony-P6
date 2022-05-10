@@ -104,10 +104,12 @@
 
 .medias-box {
   width: 100%;
-  height: 200px;
+  height: 240px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 
 .media-container {
@@ -277,8 +279,9 @@
 }
 
 .form-fig-type select {
-  width: 15%;
-  height: 25px;
+  width: 20%;
+  min-width: 150px;
+  padding: 8px;
 }
 
 .form-fig-description textarea {
