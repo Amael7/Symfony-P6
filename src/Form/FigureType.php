@@ -35,10 +35,12 @@ class FigureType extends AbstractType
             'data' => $now->format('d/m/Y H:i:s'),
             ])
             ->add('images', FileType::class, [
-                'label' => false,
+                'label' => "Fichier de l'image",
                 'multiple' => true,
                 'mapped' => false,
                 'required' => true,
+                'invalid_message' => "Veuillez choisir une photo au minimum.",
+                'attr' => ['placeholder' => "Fichier de l'image"]
             ])
             ->add('save', SubmitType::class, array('label' => 'Valider'));
 
