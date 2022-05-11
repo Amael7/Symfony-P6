@@ -364,21 +364,6 @@ button:hover {
   vertical-align: middle;
 }
 
-/* Responsive layout */
-
-
-
-@media (max-width: 800px) {
-  .figures-container {
-    flex-direction: column;
-  }
-
-  .figure-box {
-    width: 95%;
-    max-width: 95%; 
-  }
-}
-
 /******************** Media Queries ********************/
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -396,10 +381,17 @@ button:hover {
   .checkbox input {
     width: auto;
   }
+
+  .figure-box {
+    min-width: calc(25% - 22px);
+  }
 }
 
 /* Large devices (desktops, 992px and up)*/
 @media (max-width: 992px) {
+  .figure-box {
+    min-width: calc(33% - 22px);
+  }
 }
 
 /* Medium devices (tablets, 768px and up)*/
@@ -412,6 +404,10 @@ button:hover {
   .figure-description {
     max-height: 500px;
     overflow-y: scroll;
+  }
+
+  .figure-box {
+    min-width: calc(50% - 22px);
   }
 }
 
@@ -428,5 +424,14 @@ button:hover {
     padding: 0px 15px;
     background: #FFFFFF;
     border-bottom: 1px solid #f5f6fa;
+  }
+
+  .figures-container {
+    flex-direction: column;
+  }
+
+  .figure-box {
+    width: 90%;
+    max-width: 95%; 
   }
 }
