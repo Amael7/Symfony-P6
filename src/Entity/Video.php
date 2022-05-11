@@ -13,7 +13,7 @@ class Video
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private $url;
 
     #[ORM\ManyToOne(targetEntity: Figure::class, inversedBy: 'videos')]

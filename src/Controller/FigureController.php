@@ -45,13 +45,17 @@ class FigureController extends AbstractController
             $images = $form->get('images')->getData();
             // On boucle sur les images
             foreach($images as $image){
-                // On génère un nouveau nom de fichier
-                $fileName = md5(uniqid()) . '.' . $image->guessExtension();
-                // on va copier le fichier dans le dossier uploads
-                $image->move(
-                    $this->getParameter('images_directory'),
-                    $fileName
-                );
+                if ($image == "default_image.jpeg") {
+                    $fileName = $image;
+                } else {
+                    // On génère un nouveau nom de fichier
+                    $fileName = md5(uniqid()) . '.' . $image->guessExtension();
+                    // on va copier le fichier dans le dossier uploads
+                    $image->move(
+                        $this->getParameter('images_directory'),
+                        $fileName
+                    );
+                }
 
                 // on stocke l'image dans la DB (son nom)
                 $img = new Image();

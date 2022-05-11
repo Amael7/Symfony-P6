@@ -15,14 +15,26 @@
 
 /* Figure */
 .header-figure {
-  z-index: 20;
   width: 100%;
   height: 400px;
   text-align: center;
   position: relative;
   background-size: cover;
   background-color: #212529;
-  opacity: 0.7;
+}
+
+.header-figure, h1 {
+  z-index: 30;
+}
+
+#banner-figure {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-color: #212529;
+  opacity: 0.5;
 }
 
 .figures-container {
@@ -81,6 +93,7 @@
 }
 
 .figure-actions {
+  z-index: 30;
   position: absolute;
   top: 10px;
   right: 10px;
@@ -90,8 +103,9 @@
   z-index: 40;
   display: flex;
   justify-content: space-around;
-  background-color: #e1e2e6;
-  border-radius: 1px;
+  background-color: #FFFFFF;
+  opacity: 1;
+  border-radius: 2px;
 }
 
 .figure-link {

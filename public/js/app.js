@@ -1,4 +1,4 @@
-// document.addEventListener : "onResize", à rajouter
+// document.addEventListener : 'resize", à rajouter
 document.addEventListener("DOMContentLoaded", function() {
   toggleDisplayMediasBox();
 
@@ -25,7 +25,7 @@ function toggleDisplayMediasBox() {
   }
 }
 
-// // Check if an element has the "d-none" class and toggle 'd-none' on the element
+// Check if an element has the "d-none" class and toggle 'd-none' on the element
 function toggleDisplayNoneElement(element) {
   if (element.classList.contains('d-none')) {
     element.classList.remove('d-none')

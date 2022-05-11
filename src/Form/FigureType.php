@@ -7,6 +7,7 @@ use App\Entity\Image;
 use App\Entity\Video;
 use Symfony\Component\Form\AbstractType;
 use App\Entity\FigureType as EntityFigureType;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -37,10 +38,11 @@ class FigureType extends AbstractType
             'data' => $now->format('d/m/Y H:i:s'),
             ])
             ->add('images', FileType::class, [
+                'empty_data' => ["default_image.jpeg"],
                 'label' => "Fichier de l'image",
                 'multiple' => true,
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'invalid_message' => "Veuillez choisir une photo au minimum.",
                 'attr' => ['placeholder' => "Fichier de l'image"]
             ])
