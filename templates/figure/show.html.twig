@@ -7,18 +7,18 @@
 
 <div class="content-container">
 	<div class="header-figure" style="background-image: url({{ asset("uploads/" ~ figure.images|first) }});">
-		<div class="figure-actions">
-			{% if app.user %}
-				{% if app.user.id == figure.user.id %}
+		{% if app.user %}
+			{% if app.user.id == figure.user.id %}
+				<div class="figure-actions">
 					<div class="figure-link pd-xs">
 						<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
 					</div>
 					<div class="figure-link pd-xs">
 						<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
 					</div>
-				{% endif %}
+				</div>
 			{% endif %}
-		</div>
+		{% endif %}
 		<h1 class="mg-bottom-xl center txt-white">{{ figure.name }}</h1>
 	</div>
 	{% if figure.images|length >= 1 or figure.videos|length >= 1 %}
