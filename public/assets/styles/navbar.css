@@ -29,6 +29,7 @@
 .navbar-links {
   display: flex;
   align-items: center;
+  margin-right: 20px;
 }
 
 .navbar-links ul, li {
@@ -37,4 +38,51 @@
 
 .navbar-links a {
   padding-right: 15px;
+}
+
+.menu-mobile {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  align-self: center;
+  margin-right: 40px;
+}
+
+.menu-mobile:hover {
+  cursor: pointer;
+}
+
+.sec-center {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+  z-index: 200;
+}
+
+.menu-dropdown {
+  width: 200px;
+  z-index: 50;
+  padding: 5px;
+  background-color: #FFFFFF;
+  position: absolute;
+  top: 30px;
+  right: 0px;
+  border-radius: 4px;
+  display: block;
+  box-shadow: 0 14px 35px 0 rgba(9,9,12,0.4);
+}
+
+.menu-dropdown-list li {
+  display: block;
+}
+
+.menu-dropdown-list a {
+  display: block;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+.menu-dropdown-list a:hover {
+  cursor: pointer; 
+  background-color: #edeef2;
 }
