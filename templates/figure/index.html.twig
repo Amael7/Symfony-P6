@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="content-container">
-		<div id="Anchor" class="figures-container">
+		<div id="Anchor" class="figures-container js-load-more-div">
 			{% for figure in figures %}
 				<div class="figure-box">
 					<div class="figure-background">
@@ -32,8 +32,9 @@
 					</div>
 				</div>
 			{% endfor %}
+
 		</div>
-		<button class="btn js-load-more">Charger plus</button>
+		<button id="js-load-more-btn" class="btn">Charger plus</button>
 		<a class="anchor --to_up" href="#Anchor"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow up"></a>
 	</div>
 {% endblock %}

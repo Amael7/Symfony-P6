@@ -22,10 +22,35 @@ class FigureController extends AbstractController
     #[Route('/', name: 'figures')]
     public function index(ManagerRegistry $manager): Response
     {
-        $figures = $manager->getRepository(Figure::class)->findAll();
+        $figures = $manager->getRepository(Figure::class)->findBy([], [], 15, 0);
+
+        // $figures = $manager->getRepository(Figure::class)->findAll();
         return $this->render('figure/index.html.twig', [
             'figures' => $figures,
         ]);
+    }
+
+    /**
+     * Get the 15 next tricks in the database and create a Twig file with them that will be displayed via Javascript
+     * 
+     * #[Route('/{start}', name: 'LoadFigures', requirements: '/[0-9]+/')]
+     * 
+     */
+    #[Route('/{start}', name: 'LoadFigures')]
+    public function loadFigures(ManagerRegistry $manager, $start = 15)
+    {
+        // Get 15 Figures from the start position
+        $figures = $manager->getRepository(Figure::class)->findBy([], [], 15, $start);
+        dump($figures);
+        $arr = [];
+        foreach($figures as $figure) {
+            array_push($arr, json_encode($figure));
+        }
+
+        
+        dump($arr);
+        exit;
+        return json_encode($figures);
     }
 
     #[Route('/figure/new', name: 'figure_new')]
