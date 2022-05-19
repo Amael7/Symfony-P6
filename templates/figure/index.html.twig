@@ -5,36 +5,35 @@
 
 {% block body %}
 	<div id="banner" style="background-image: url({{ asset('images/banner.jpeg') }})">
-		<a class="anchor --to_down" href="#Anchor"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow down" class="arrow-inversed"></a>
+		<a class="anchor --to_down" href="#figure-list"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow down" class="arrow-inversed"></a>
 	</div>
 
 	<div class="content-container">
-		<div id="Anchor" class="figures-container js-load-more-div">
-			{% for figure in figures %}
-				<div class="figure-box">
-					<div class="figure-background">
-						<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="figure image">
-					</div>
-					<div class="figure-content">
-						<div class="figure-title pd-xs">
-							<a href="/figures/{{ figure.id }}/{{ figure.slug }}">{{ figure.name }}</a>
+		<div id="figure-list" class="figures-container">
+				{% for figure in figures %}
+					<div class="figure-box">
+						<div class="figure-background">
+							<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="figure image">
 						</div>
-						{% if app.user %}
-							{% if app.user.id == figure.user.id %}
-								<div class="figure-link pd-xs">
-									<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
-								</div>
-								<div class="figure-link pd-xs">
-									<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
-								</div>
+						<div class="figure-content">
+							<div class="figure-title pd-xs">
+								<a href="/figures/{{ figure.id }}/{{ figure.slug }}">{{ figure.name }}</a>
+							</div>
+							{% if app.user %}
+								{% if app.user.id == figure.user.id %}
+									<div class="figure-link pd-xs">
+										<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
+									</div>
+									<div class="figure-link pd-xs">
+										<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
+									</div>
+								{% endif %}
 							{% endif %}
-						{% endif %}
+						</div>
 					</div>
-				</div>
-			{% endfor %}
-
+				{% endfor %}
 		</div>
 		<button id="js-load-more-btn" class="btn">Charger plus</button>
-		<a class="anchor --to_up" href="#Anchor"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow up"></a>
+		<a class="anchor --to_up" href="#figure-list"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow up"></a>
 	</div>
 {% endblock %}
