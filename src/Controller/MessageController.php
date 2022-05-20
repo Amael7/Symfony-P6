@@ -40,8 +40,11 @@ class MessageController extends AbstractController
     #[Route('/figures/{id}/messages/{start}', name: 'loadMessages')]
     public function loadMessage(ManagerRegistry $manager, $id, $start = 10)
     {
+        $messagesAll = array_reverse($manager->getRepository(Message::class)->findBy(['figure' => $id]));
+        
         // Get 10 messages from the start position
-        $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id], [], 10, $start);
+        $messages = array_slice($messagesAll, $start, 10);
+        // $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id], [], 10, $start);
         $user = $this->getUser();
         $figure = $manager->getRepository(Figure::class)->find($id);
 

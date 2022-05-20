@@ -153,9 +153,10 @@ class FigureController extends AbstractController
     #[Route("/figures/{id}/{slug}", name: 'figure_show')]
     public function show(ManagerRegistry $manager, Request $request, $id, $slug) {
         $figure = $manager->getRepository(Figure::class)->find($id);
-        $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id], [], 10, 0);
-
-        $messagesAll = $manager->getRepository(Message::class)->findBy(['figure' => $id]);
+        $messagesAll = array_reverse($manager->getRepository(Message::class)->findBy(['figure' => $id]));
+        // $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id], [], 10, 0);
+        
+        $messages = array_slice($messagesAll, 0, 10);
         $user = $this->getUser();
         if (!$figure) {
             throw $this->createNotFoundException(
