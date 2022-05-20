@@ -48,6 +48,18 @@ class FigureType extends AbstractType
             ])
             // ->add('videos', CollectionType::class, [
             //     'entry_type' => VideoType::class,
+            //     'label' => false,
+            //     'entry_options' => ['label' => false],
+            //     'allow_add' => true,
+            //     'allow_delete' => true,
+            //     'by_reference' => false
+            // ])
+            // ->add('videos', TextType::class, [
+            //     'mapped' => false,
+            //     'required' => false,
+            // ])
+            // ->add('videos', CollectionType::class, [
+            //     'entry_type' => VideoType::class,
             //     'allow_add' => true,
             //     'allow_delete' => true
             // ])

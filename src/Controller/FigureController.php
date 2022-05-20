@@ -79,7 +79,6 @@ class FigureController extends AbstractController
                     $figure->addImage($img);
                 }
             }
-
             // on récupère les videos transmises
             // $videos = $form->get('videos')->getData();
             // On boucle sur les videos
@@ -89,7 +88,7 @@ class FigureController extends AbstractController
             //     $vid->setUrl($video->getUrl());
             //     $figure->addVideo($vid);
             // }
-                // on stocke l'url de la video dans la DB
+                // // on stocke l'url de la video dans la DB
                 // $vid = new Video();
                 // $vid->setUrl($videos);
                 // $figure->addVideo($vid);
@@ -138,6 +137,20 @@ class FigureController extends AbstractController
                     $figure->addImage($img);
                 }
             }
+
+            // on récupère les videos transmises
+            // $videos = $form->get('videos')->getData();
+            // On boucle sur les videos
+            // foreach($videos as $video){
+            //     // on stocke l'url de la video dans la DB
+            //     $vid = new Video();
+            //     $vid->setUrl($video);
+            //     $figure->addVideo($vid);
+            // }
+                // on stocke l'url de la video dans la DB
+                // $vid = new Video();
+                // $vid->setUrl($videos);
+                // $figure->addVideo($vid);
 
             $em = $manager->getManager();
             $figure = $form->getData();
