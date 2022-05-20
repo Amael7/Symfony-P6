@@ -23,18 +23,20 @@ class FigureController extends AbstractController
     public function index(ManagerRegistry $manager): Response
     {
         $figures = $manager->getRepository(Figure::class)->findBy([], [], 10, 0);
+        $figuresAll = $manager->getRepository(Figure::class)->findAll();
 
         return $this->render('figure/index.html.twig', [
             'figures' => $figures,
+            'figuresAll' => $figuresAll,
         ]);
     }
 
-    // Get the 10 next tricks in the database and create a Twig file with them that will be displayed via Javascript
-    #[Route('/{start}', name: 'LoadFigures')]
+    // Get the 10 next Figures in the database and create a Twig file with them that will be displayed via Javascript
+    #[Route('/figures/{start}', name: 'loadFigures')]
     public function loadFigures(ManagerRegistry $manager, $start = 10)
     {
-        // Get 15 Figures from the start position
-        $figures = $manager->getRepository(Figure::class)->findBy([], [], 5, $start);
+        // Get 10 Figures from the start position
+        $figures = $manager->getRepository(Figure::class)->findBy([], [], 10, $start);
 
         return $this->render('figure/load_more_figures.html.twig', [
             'figures' => $figures,
@@ -151,7 +153,9 @@ class FigureController extends AbstractController
     #[Route("/figures/{id}/{slug}", name: 'figure_show')]
     public function show(ManagerRegistry $manager, Request $request, $id, $slug) {
         $figure = $manager->getRepository(Figure::class)->find($id);
-        $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id]);
+        $messages = $manager->getRepository(Message::class)->findBy(['figure' => $id], [], 10, 0);
+
+        $messagesAll = $manager->getRepository(Message::class)->findBy(['figure' => $id]);
         $user = $this->getUser();
         if (!$figure) {
             throw $this->createNotFoundException(
@@ -185,6 +189,7 @@ class FigureController extends AbstractController
             'figure' => $figure,
             'user' => $user,
             'messages' => $messages,
+            'messagesAll' => $messagesAll,
             'form' => $form->createView(),
         ]);
     }

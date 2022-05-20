@@ -10,30 +10,32 @@
 
 	<div class="content-container">
 		<div id="figure-list" class="figures-container">
-				{% for figure in figures %}
-					<div class="figure-box">
-						<div class="figure-background">
-							<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="figure image">
-						</div>
-						<div class="figure-content">
-							<div class="figure-title pd-xs">
-								<a href="/figures/{{ figure.id }}/{{ figure.slug }}">{{ figure.name }}</a>
-							</div>
-							{% if app.user %}
-								{% if app.user.id == figure.user.id %}
-									<div class="figure-link pd-xs">
-										<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
-									</div>
-									<div class="figure-link pd-xs">
-										<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
-									</div>
-								{% endif %}
-							{% endif %}
-						</div>
+			{% for figure in figures %}
+				<div class="figure-box">
+					<div class="figure-background">
+						<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="figure image">
 					</div>
-				{% endfor %}
+					<div class="figure-content">
+						<div class="figure-title pd-xs">
+							<a href="/figures/{{ figure.id }}/{{ figure.slug }}">{{ figure.name }}</a>
+						</div>
+						{% if app.user %}
+							{% if app.user.id == figure.user.id %}
+								<div class="figure-link pd-xs">
+									<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
+								</div>
+								<div class="figure-link pd-xs">
+									<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
+								</div>
+							{% endif %}
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
 		</div>
-		<button id="js-load-more-btn" class="btn">Charger plus</button>
+		{% if figuresAll|length > 10 %}
+			<button id="js-load-more-btn-figures" class="btn">Charger plus</button>
+		{% endif %}
 		<a class="anchor --to_up" href="#figure-list"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow up"></a>
 	</div>
 {% endblock %}

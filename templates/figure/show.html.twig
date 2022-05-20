@@ -64,7 +64,7 @@
 		{% endif %}
 
 		{% if messages %}
-			<div class="messages">
+			<div id="message-list" class="messages">
 				{% for message in messages %}
 					<div class="message-box">
 						<div class="user-profil">
@@ -89,6 +89,9 @@
 					</div>
 				{% endfor %}
 			</div>
+			{% if messagesAll|length > 10 %}
+				<button id="js-load-more-btn-messages" data-figure-id="{{ figure.id }}" class="btn">Charger plus</button>
+			{% endif %}
 		{% endif %}
 	</div>
 </div>
