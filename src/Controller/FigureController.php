@@ -80,18 +80,12 @@ class FigureController extends AbstractController
                 }
             }
             // on récupère les videos transmises
-            // $videos = $form->get('videos')->getData();
-            // On boucle sur les videos
-            // foreach($videos as $video){
-            //     // on stocke l'url de la video dans la DB
-            //     $vid = new Video();
-            //     $vid->setUrl($video->getUrl());
-            //     $figure->addVideo($vid);
-            // }
-                // // on stocke l'url de la video dans la DB
-                // $vid = new Video();
-                // $vid->setUrl($videos);
-                // $figure->addVideo($vid);
+            $videos = $form->get('videos')->getData();
+            // on stocke l'url de la video dans la DB
+            $vid = new Video();
+            $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'', $videos);
+            $vid->setUrl($url);
+            $figure->addVideo($vid);
 
             $figure = $form->getData();
             $em = $manager->getManager();
@@ -139,18 +133,13 @@ class FigureController extends AbstractController
             }
 
             // on récupère les videos transmises
-            // $videos = $form->get('videos')->getData();
-            // On boucle sur les videos
-            // foreach($videos as $video){
-            //     // on stocke l'url de la video dans la DB
-            //     $vid = new Video();
-            //     $vid->setUrl($video);
-            //     $figure->addVideo($vid);
-            // }
-                // on stocke l'url de la video dans la DB
-                // $vid = new Video();
-                // $vid->setUrl($videos);
-                // $figure->addVideo($vid);
+            $videos = $form->get('videos')->getData();
+
+            // on stocke l'url de la video dans la DB
+            $vid = new Video();
+            $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'', $videos);
+            $vid->setUrl($url);
+            $figure->addVideo($vid);
 
             $em = $manager->getManager();
             $figure = $form->getData();
@@ -233,6 +222,21 @@ class FigureController extends AbstractController
 
             $em = $manager->getManager();
             $em->remove($image);
+            $em->flush();
+
+            return new JsonResponse(['success' => 1]);
+        } else {
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
+    }
+
+    #[Route("/delete/video/{id}", name: 'figure_delete_video', methods: ["DELETE"])]
+    public function deleteVideo(Video $video, ManagerRegistry $manager, Request $request) {
+        $data = json_decode($request->getContent(), true);
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$video->getId(), $data['_token'])) {
+            $em = $manager->getManager();
+            $em->remove($video);
             $em->flush();
 
             return new JsonResponse(['success' => 1]);
