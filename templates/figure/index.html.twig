@@ -24,7 +24,7 @@
 								<div class="figure-link pd-xs">
 									<a href="/figures/{{figure.id}}/{{ figure.slug }}/edit"><img src="{{ asset('svg/pencil-solid.svg') }}" alt="edit figure"></a>
 								</div>
-								<div class="figure-link pd-xs">
+								<div class="figure-link pd-xs" onclick="return confirm(`Êtes-vous sûr de vouloir supprimer la figure : {{figure.name}} ?`)">
 									<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete"><img src="{{ asset('svg/trash-can-solid.svg') }}" alt="delete figure"></a>
 								</div>
 							{% endif %}
