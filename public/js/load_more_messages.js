@@ -10,6 +10,12 @@ function loadMoreMessages() {
 
     axios.get(href).then(function(response) {
       divMessagesList.insertAdjacentHTML('beforeend', response.data);
+      const numberMessagesLoadNow = document.getElementsByClassName('message-box').length;
+      const totalMessages = btnLoadMore.dataset.totalNumberMessages;
+
+      if (totalMessages == numberMessagesLoadNow) {
+        btnLoadMore.classList.add('d-none');
+      }
     }).catch(e => alert(e))
   });
 }
