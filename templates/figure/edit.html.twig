@@ -25,9 +25,12 @@
 			{% endfor %}
 			{% for video in figure.videos %}
 				<div class="media-container">
-					<video controls width="250">
-						<source src="{{video.url}}" type="video/webm">
-					</video>
+					<iframe width="200" height="150" src="https://www.youtube.com/embed/{{video.url}}" 
+						title="YouTube video player" frameborder="0" 
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+						allowfullscreen>
+					</iframe>
+					<a href="{{ path('figure_delete_video', {id: video.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ video.id) }}" >Supprimer</a>
 				</div>
 			{% endfor %}
 		</div>
@@ -51,6 +54,9 @@
 				</div>
 				<div class="row form-fig-type">
           {{ form_widget(form.images) }}
+				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.videos) }}
 				</div>
 				<div class="row form-fig-button">
 					<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete" class="btn btn-red">Supprimer</a>

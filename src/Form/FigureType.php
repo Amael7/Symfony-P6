@@ -46,23 +46,14 @@ class FigureType extends AbstractType
                 'invalid_message' => "Veuillez choisir une photo au minimum.",
                 'attr' => ['placeholder' => "Fichier de l'image"]
             ])
-            // ->add('videos', CollectionType::class, [
-            //     'entry_type' => VideoType::class,
-            //     'label' => false,
-            //     'entry_options' => ['label' => false],
-            //     'allow_add' => true,
-            //     'allow_delete' => true,
-            //     'by_reference' => false
-            // ])
-            // ->add('videos', TextType::class, [
-            //     'mapped' => false,
-            //     'required' => false,
-            // ])
-            // ->add('videos', CollectionType::class, [
-            //     'entry_type' => VideoType::class,
-            //     'allow_add' => true,
-            //     'allow_delete' => true
-            // ])
+            ->add('videos', TextType::class, [
+                'mapped' => false,
+                'required' => false,
+                'attr' => [
+                    'label' => "Ajouter une vidéo",
+                    'placeholder' => "Insérer l'URL de la vidéo"
+                ]
+            ])
             ->add('save', SubmitType::class, array('label' => 'Valider'));
 
     }
