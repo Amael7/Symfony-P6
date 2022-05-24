@@ -10,7 +10,7 @@ window.onload = () => {
       e.preventDefault();
 
       // Demander confirmation suppression
-      if(confirm("Voulez-vous supprimer cette image ? Elle sera supprimer instantanément dès le clic")) {
+      if(confirm("Voulez-vous supprimer ce média ? Elle sera supprimer instantanément dès le clic")) {
         // On envoie une requête Ajax vers le href du lien avec la methode DELETE
         fetch(this.getAttribute('href'), {
           method: "DELETE",
