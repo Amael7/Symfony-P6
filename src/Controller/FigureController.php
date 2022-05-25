@@ -83,7 +83,13 @@ class FigureController extends AbstractController
             $videos = $form->get('videos')->getData();
             // on stocke l'url de la video dans la DB
             $vid = new Video();
-            $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'', $videos);
+            if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
+                $vid->setPlatform("dailymotion");
+                $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
+            } else {
+                $vid->setPlatform("youtube");
+                $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+            }
             $vid->setUrl($url);
             $figure->addVideo($vid);
 
@@ -137,7 +143,13 @@ class FigureController extends AbstractController
 
             // on stocke l'url de la video dans la DB
             $vid = new Video();
-            $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'', $videos);
+            if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
+                $vid->setPlatform("dailymotion");
+                $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
+            } else {
+                $vid->setPlatform("youtube");
+                $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+            }
             $vid->setUrl($url);
             $figure->addVideo($vid);
 
