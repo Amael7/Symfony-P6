@@ -345,7 +345,12 @@ button:hover {
 .profil_picture {
   height: 250px;
   width: 250px;
-  object-fit: contain;
+}
+
+.profil_picture img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
 }
 
 .header-profil {

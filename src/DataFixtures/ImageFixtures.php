@@ -20,10 +20,14 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $figures = $manager->getRepository(Figure::class)->findAll();
+        $images = [
+                    "fig_1.jpg", "fig_2.jpeg", "fig_3.jpeg", "fig_4.jpeg", "fig_5.jpeg",
+                    "fig_6.jpeg", "fig_7.jpg", "fig_8.jpeg", "fig_9.jpeg",
+                ];
         foreach ($figures as $figure) {
             for ($i = 0; $i <= 2; $i++) {
                 $image = new Image();
-                $image->setUrl("https://loremflickr.com/640/360")
+                $image->setName($images[rand(0, 8)])
                     ->setFigure($figure);
 
                 $manager->persist($image);

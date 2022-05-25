@@ -6,7 +6,9 @@
 <div class="content-container text-left">
   <h1 class="mg-bottom-l">Mon Profil</h1>
   <div class="header-profil">
-    <div class="profil_picture mg-right-xl" style="background-image: url('{{ user.photo }}')"></div>
+    <div class="profil_picture mg-right-xl">
+      <img src="{{ user.photo }}" alt="user profil">
+    </div>
     <div class="profil-informations">
       <p><a href="/profil/edit">Editer mon profil</a></p>
       <p class="mg-bottom-l"><a href="/reset-password">Modifier mon mot de passe</a></p>
