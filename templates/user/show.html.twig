@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Profil : {{ user.fullname }} </h1>
-
-    <p>username : {{ user.username }}</p>
-    <p>email : {{ user.email }}</p>
-    <img src="{{ user.photo }}" alt="photo de profil">
+<div class="content-container text-left">
+  <h1 class="mg-bottom-l">Mon Profil</h1>
+  <div class="header-profil">
+    <div class="profil_picture mg-right-xl">
+      <img src="{{ user.photo }}" alt="user profil">
+    </div>
+    <div class="profil-informations">
+      <p><a href="/profil/edit">Editer mon profil</a></p>
+      <p class="mg-bottom-l"><a href="/reset-password">Modifier mon mot de passe</a></p>
+      <h3>Username : <span>{{ user.username }}</span></h3>
+      <h3>Nom : <span>{{ user.lastname }}</span></h3>
+      <h3>Prénom : <span>{{ user.firstname }}</span></h3>
+      <h3>Email : <span>{{ user.email }}</span></h3>
+    </div>
+  </div>
 </div>
 {% endblock %}
 

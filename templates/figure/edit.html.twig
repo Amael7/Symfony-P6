@@ -1,40 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} edition figure
+{% block title %} Editer la figure
 {% endblock %}
 
 {% block body %}
 
-<div class="">
-    <h1>Mon formulaire d'edition</h1>
-    <p>editer un article</p>
-</div>
-<div class="container">
-    <div class="row">
-        {{ form_start(form) }}
-        <table>
-            <tbody>
-            <tr>
-                <th>Name:</th>
-                <td>{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}</td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td>{{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}</td>
-            </tr>
-            <tr>
-                <th>Type:</th>
-                <td>{{ form_widget(form.type) }}</td>
-            </tr>
-            <tr>
-                <th></th>
-                <td>{{ form_widget(form.save) }}</td>
-            </tr>
-            </tbody>
-        </table>
-        {{ form_end(form) }}
-    </div>
-</div>
-  {# {{ form(form) }} #}
+<div class="content-container">
+	<div class="header-figure">
+		<h1 class="mg-bottom-xl center txt-white">{{ figure.name }}</h1>
+		<img src="{{ asset("uploads/" ~ figure.images|first) }}" alt="banner figure" id="banner-figure">
+	</div>
+	{% if figure.images|length >= 1 or figure.videos|length >= 1 %}
+		<div id="js-div-see-medias" class="mg-top-xs d-none">
+			<button id='js-btn-see-medias'>Voir les médias</button>
+		</div>
+		<div id="js-medias-box" class="medias-box">
+			{% for image in figure.images %}
+				<div class="media-container">
+					<img src="{{ asset("uploads/" ~ image) }}" alt="image">
+					{% if figure.images.count > 1 %}
+						<a href="{{ path('figure_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" >Supprimer</a>
+					{% endif %}
+				</div>
+			{% endfor %}
+			{% for video in figure.videos %}
+				<div class="media-container">
+					<iframe width="200" height="150" src="{{video.url}}"  
+						title="YouTube video player" frameborder="0" 
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+						allowfullscreen>
+					</iframe>
+					<a href="{{ path('figure_delete_video', {id: video.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ video.id) }}" >Supprimer</a>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
 
+	<div class="content-container">
+		{% for flashError in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+		{% endfor %}
+
+		<div class="form-container text-align-left">
+			{{ form_start(form) }}
+				<div class="row form-fig-name">
+					{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}
+				</div>
+				<div class="row form-fig-description">
+          {{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}
+				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.type) }}
+				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.images) }}
+				</div>
+				<div class="row form-fig-type">
+          {{ form_widget(form.videos) }}
+				</div>
+				<div class="row form-fig-button">
+					<a href="/figures/{{figure.id}}/{{ figure.slug }}/delete" class="btn btn-red">Supprimer</a>
+          {{ form_widget(form.save) }}
+				</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+</div>
 {% endblock %}

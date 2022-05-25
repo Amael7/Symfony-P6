@@ -1,0 +1,443 @@
+.layout-wrapper {
+  /* position: relative; */
+  height: 100%;
+  padding-bottom: 3rem;
+}
+
+.content-container {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Figure */
+.header-figure {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-color: #212529;
+}
+
+.header-figure, h1 {
+  z-index: 30;
+}
+
+#banner-figure {
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-color: #212529;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+.figures-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.figure-box {
+  flex-grow: 1;
+  height: 200px;
+  max-width: calc(20% - 22px);
+  width: calc(20% - 22px);
+  border: 1px solid #212529;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.figure-background {
+  height: 70%;
+}
+
+.figure-background img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.figure-content {
+  background-color: #FFFFFF;
+  height: 30%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.figure-content img {
+  width: 20px;
+  height: 20px;
+}
+
+.figure-title {
+  width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.figure-title a {
+  color: #212529;
+}
+
+.figure-actions {
+  z-index: 30;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 8%;
+  min-width: 100px;
+  height: 40px;
+  z-index: 40;
+  display: flex;
+  justify-content: space-around;
+  background-color: #FFFFFF;
+  opacity: 1;
+  border-radius: 2px;
+}
+
+.figure-link {
+  width: 20%;
+}
+
+.figure-link img {
+  vertical-align: middle;
+}
+
+.medias-box {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.media-container {
+  width: 200px;
+  height: 150px;
+  padding: 5px;
+}
+
+.media-container:first-child {
+  padding-left: 15px;
+}
+
+.media-container img, video {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.figure-details {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.figure-description {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.info-list {
+  display: inline-block;
+}
+
+.info-list li {
+  border: 1px solid #212529;
+  padding: 5px;
+  margin: 10px;
+  margin-bottom: 30px;
+}
+
+.messages {
+  border-top: 1px solid #212529;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.user-profil {
+  display: flex;
+  align-items: top;
+  padding: 10px;
+  padding-left: 0px;
+}
+
+.user-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.user-data {
+  padding-left: 20px;
+}
+
+.message-box {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.message-content {
+  border: 1px solid #212529;
+  border-radius: 4px;
+  background-color: #f5f6fa;
+  width: 95%;
+  text-align: left;
+}
+
+.message-content p {
+  padding: 10px;
+}
+
+.message-container {
+  width: 90%;
+  margin: 0 auto;
+  border-top: 1px solid #212529;
+}
+
+.new-message-box {
+  text-align: -webkit-center;
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.message-input textarea {
+  width: 80%;
+}
+
+.message-delete {
+  width: 16px;
+}
+
+.message {
+  display: flex;
+}
+/* Figure End */
+
+.form-message-box button {
+  padding: 9px;
+}
+
+
+/* Form */
+
+.form-container {
+  border-radius: 2px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form-container label {
+  font-size: 22px;
+}
+
+.form-container input, textarea {
+  font-size: 16px;
+  padding: 8px 16px;
+  border: 1px solid #e1e2e6;
+  border-radius: 4px;
+  width: 60%;
+}
+
+.checkbox input {
+  width: auto;
+}
+
+.btn {
+  font-weight: 700;
+  padding: 8px 24px;
+  margin: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.green-success {
+  background-color: #6ba667;
+  color: #eaf4ea;
+}
+
+.green-success:hover {
+  background-color: #eaf4ea;
+  color: #6ba667;
+}
+
+.btn-red {
+  background-color: #B34844;
+  color: #FFFFFF;
+}
+
+.btn-red:hover {
+  background-color: #FCE7E7;
+  color: #B34844;
+}
+
+.row {
+  width: 80%;
+  margin: 16px auto;
+}
+
+.form-fig-name input {
+  width: 80%;
+}
+
+.form-fig-type select {
+  width: 20%;
+  min-width: 150px;
+  padding: 8px;
+}
+
+.form-fig-description textarea {
+  width: 90%;
+  height: 300px;
+}
+
+button {
+  font-family: 'PT Serif', 'PT Sans', serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 24px;
+  margin: 8px;
+  margin-left: 0px;
+  border-radius: 4px;
+  border: none;
+  background-color: #6ba667;
+  color: #eaf4ea;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.form-fig-button {
+  text-align: right;
+}
+
+.form-fig-button button:hover {
+  background-color: #eaf4ea;
+  border-color: #eaf4ea;
+  color: #6ba667;
+}
+
+/* Form End */
+
+.profil_picture {
+  height: 250px;
+  width: 250px;
+}
+
+.profil_picture img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.header-profil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-bottom: 25px;
+}
+
+.profil-informations {
+  margin-left: 40px;
+}
+
+.inline-block {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+/******************** Media Queries ********************/
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (max-width: 1200px) {
+  html,
+  body {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .form-container input, textarea {
+    width: 100%;
+  }
+
+  .checkbox input {
+    width: auto;
+  }
+
+  .figure-box {
+    min-width: calc(25% - 22px);
+  }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (max-width: 992px) {
+  .figure-box {
+    min-width: calc(33% - 22px);
+  }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (max-width: 767px) {
+  .profil-informations {
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+
+  .figure-description {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+  .figure-box {
+    min-width: calc(50% - 22px);
+  }
+}
+
+/* small devices (mobile, 576px and up)*/
+@media (max-width: 576px) {
+  .layout-navbar-wrapper {
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    min-height: 70px;
+    max-height: 10vh;
+    padding: 0px 15px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #f5f6fa;
+  }
+
+  .figures-container {
+    flex-direction: column;
+  }
+
+  .figure-box {
+    width: 90%;
+    max-width: 95%; 
+  }
+}

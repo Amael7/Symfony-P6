@@ -4,21 +4,42 @@
 {% endblock %}
 
 {% block body %}
-	{% for flashError in app.flashes('verify_email_error') %}
-		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
-	{% endfor %}
+	<div class="content-container">
+		{% for flashError in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+		{% endfor %}
 
-	<h1>Inscription</h1>
-
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.firstName) }}
-	{{ form_row(registrationForm.lastName) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.username) }}
-	{{ form_row(registrationForm.plainPassword, {
-                label: 'Mot de passe'
-            }) }}
-
-	<button type="submit" class="btn">Inscription</button>
-	{{ form_end(registrationForm) }}
+		<h1 class="mg-top-xl mg-bottom-xl">Inscription</h1>
+		<div class="form-container">
+			{{ form_start(registrationForm) }}
+				<div class="row">
+					{{ form_label(registrationForm.email, 'Email') }}
+				</div>
+				<div class="row">
+					{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'}}) }}
+				</div>
+				<div class="row">
+					{{ form_label(registrationForm.username, 'Username') }}
+				</div>
+				<div class="row">
+					{{ form_widget(registrationForm.username, {'attr': {'placeholder': 'Username', 'class': 'form-control'}}) }}
+				</div>
+				<div class="row">
+					{{ form_label(registrationForm.plainPassword.first, 'Mot de passe') }}
+				</div>
+				<div class="row">
+					{{ form_widget(registrationForm.plainPassword.first, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control'}}) }}
+				</div>
+				<div class="row">
+					{{ form_label(registrationForm.plainPassword.second, 'Repetez mot de passe') }}
+				</div>
+				<div class="row">
+					{{ form_widget(registrationForm.plainPassword.second, {'attr': {'placeholder': 'Repetez mot de passe', 'class': 'form-control'}}) }}
+				</div>
+				<div class="row mg-top-l">
+					<button type="submit" class="btn green-success">Inscription</button>
+				</div>
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
 {% endblock %}

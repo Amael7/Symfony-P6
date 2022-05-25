@@ -1,0 +1,19 @@
+/*
+ * Welcome to your app's main JavaScript file!
+ *
+ * We recommend including the built version of this JavaScript file
+ * (and its CSS file) in your base layout (base.html.twig).
+ */
+
+// any CSS you import will output into a single css file (app.css in this case)
+import './styles/app.css';
+import './styles/attributes.css';
+import './styles/banner.css';
+import './styles/colors.css';
+import './styles/default.css';
+import './styles/font.css';
+import './styles/navbar.css';
+import './styles/footer.css';
+
+// start the Stimulus application
+import './bootstrap';

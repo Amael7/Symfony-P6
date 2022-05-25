@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Bienvenue!
 			{% endblock %}
 		</title>
 		<link
@@ -12,27 +12,28 @@
 		{% block stylesheets %}
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
-
-		{% block javascripts %}
-			{{ encore_entry_script_tags('app') }}
-		{% endblock %}
 	</head>
 	<body>
+		<div class="layout-wrapper">
+			<div class="layout-navbar-wrapper">
+				{{ include('partials/_navbar.html.twig') }}
+			</div>
 
-		<div class="navbar">
-			<ul>
-				<li><a href="/">home</a></li>
-				{% if app.user %}
-					<li><a href="/profil">profil</a></li>
-					<li><a href="/figure/new">Créer une figures</a></li>
-					<li><a href="/logout">déconnexion</a></li>
-				{% else %}
-					<li><a href="/login">connexion</a></li>
-					<li><a href="/register">inscription</a></li>
-				{% endif %}
-			</ul>
+			{% block body %}{% endblock %}
+
+			<footer>
+				<p>Tous droits réservés © Montoro Stéphane</p>
+			</footer>
 		</div>
-
-		{% block body %}{% endblock %}
 	</body>
+
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('js/media.js') }}"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="{{ asset('js/figure.js') }}"></script>
+		<script src="{{ asset('js/load_more_figures.js') }}"></script>
+		<script src="{{ asset('js/load_more_messages.js') }}"></script>
+	{% endblock %}
 </html>

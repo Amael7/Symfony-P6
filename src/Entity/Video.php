@@ -13,12 +13,15 @@ class Video
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private $url;
 
     #[ORM\ManyToOne(targetEntity: Figure::class, inversedBy: 'videos')]
     #[ORM\JoinColumn(nullable: false)]
     private $figure;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $platform;
 
     public function getId(): ?int
     {
@@ -52,5 +55,17 @@ class Video
     public function __toString()
     {
         return $this->getUrl();
+    }
+
+    public function getPlatform(): ?string
+    {
+        return $this->platform;
+    }
+
+    public function setPlatform(string $platform): self
+    {
+        $this->platform = $platform;
+
+        return $this;
     }
 }

@@ -1,0 +1,81 @@
+/* Font */
+.font-weight-500 {
+  font-weight: 500;
+}
+
+.font-size--small {
+  font-size: 14px;
+}
+/* Font End */
+
+.text-align-left {
+  text-align: left;
+}
+
+.vertical-align-top {
+  vertical-align: top;
+}
+
+.relative {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-left {
+  text-align: left;
+} 
+
+/* Padding */
+.pd-xs {
+  padding: 5px;
+}
+
+.pd-s {
+  padding: 10px;
+}
+/* Padding End */
+
+/* Margin */
+.mg-top-xl {
+  margin-top: 40px;
+} 
+
+.mg-top-xs {
+  margin-top: 30px;
+}
+
+.mg-top-l {
+  margin-top: 20px;
+}
+
+.mg-bottom-xl {
+  margin-bottom: 40px;
+}
+
+.mg-bottom-l {
+  margin-bottom: 20px;
+}
+
+.mg-left-xl {
+  margin-left: 40px;
+}
+
+.mg-right-xl {
+  margin-right: 40px;
+}
+
+/* Margin End */
+
+.txt-white {
+  color: white;
+}
+
+.d-none {
+  display: none !important;
+}
