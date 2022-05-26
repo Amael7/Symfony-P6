@@ -71,7 +71,7 @@
 				{% for message in messages %}
 					<div class="message-box">
 						<div class="user-profil">
-							<img class="user-picture" src="{{ message.user.photo }}" alt="photo de profil">
+							<img class="user-picture" src="{{ asset("uploads/" ~ message.user.photo) }}" alt="photo de profil">
 							<div class="user-data">
 								<p>{{ message.user.fullname }} </p>
 								<p>{{ message.createdAt }} </p>

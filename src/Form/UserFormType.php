@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -20,7 +21,14 @@ class UserFormType extends AbstractType
             ->add('username')
             ->add('lastname')
             ->add('firstname')
-            ->add('photo');
+            ->add('photo', FileType::class, [
+                // 'empty_data' => "default-profil.png",
+                'label' => "Fichier de l'image",
+                'multiple' => false,
+                'mapped' => false,
+                'required' => false,
+                'attr' => ['placeholder' => "Fichier de l'image"]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
                 ->setEmail($faker->safeEmail)
                 ->setPassword($faker->sha256)
                 ->setIsVerified(true)
-                ->setPhoto("https://i0.wp.com/sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png?w=300&ssl=1");
+                ->setPhoto("default-profil.png");
 
             $manager->persist($user);
         }
