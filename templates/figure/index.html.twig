@@ -10,6 +10,15 @@
 	</div>
 
 	<div class="content-container">
+		<div class="row">
+			{% for label, messages in app.flashes(['success', 'warning']) %}
+				{% for message in messages %}
+					<div class="flash-{{ label }} mg-l">
+						<p><strong>{{ message }}</strong></p>
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
 		<div id="figure-list" class="figures-container">
 			{% for figure in figures %}
 				<div class="figure-box">
@@ -32,16 +41,6 @@
 						{% endif %}
 					</div>
 				</div>
-			{% endfor %}
-		</div>
-
-		<div class="row">
-			{% for label, messages in app.flashes(['success', 'warning']) %}
-				{% for message in messages %}
-					<div class="flash-{{ label }} mg-l">
-						<p><strong>{{ message }}</strong></p>
-					</div>
-				{% endfor %}
 			{% endfor %}
 		</div>
 		
