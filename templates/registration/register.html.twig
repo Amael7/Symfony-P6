@@ -13,28 +13,16 @@
 		<div class="form-container">
 			{{ form_start(registrationForm) }}
 				<div class="row">
-					{{ form_label(registrationForm.email, 'Email') }}
+					{{ form_row(registrationForm.email) }}
 				</div>
 				<div class="row">
-					{{ form_widget(registrationForm.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'}}) }}
+					{{ form_row(registrationForm.username) }}
 				</div>
 				<div class="row">
-					{{ form_label(registrationForm.username, 'Username') }}
+					{{ form_row(registrationForm.plainPassword.first) }}
 				</div>
 				<div class="row">
-					{{ form_widget(registrationForm.username, {'attr': {'placeholder': 'Username', 'class': 'form-control'}}) }}
-				</div>
-				<div class="row">
-					{{ form_label(registrationForm.plainPassword.first, 'Mot de passe') }}
-				</div>
-				<div class="row">
-					{{ form_widget(registrationForm.plainPassword.first, {'attr': {'placeholder': 'Mot de passe', 'class': 'form-control'}}) }}
-				</div>
-				<div class="row">
-					{{ form_label(registrationForm.plainPassword.second, 'Repetez mot de passe') }}
-				</div>
-				<div class="row">
-					{{ form_widget(registrationForm.plainPassword.second, {'attr': {'placeholder': 'Repetez mot de passe', 'class': 'form-control'}}) }}
+					{{ form_row(registrationForm.plainPassword.second) }}
 				</div>
 				<div class="row mg-top-l">
 					<button type="submit" class="btn green-success">Inscription</button>
