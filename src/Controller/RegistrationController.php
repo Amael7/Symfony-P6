@@ -40,11 +40,15 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             )
-            ->setPhoto("https://i0.wp.com/sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png?w=300&ssl=1")
-            ;
+            ->setPhoto("default-profil.png");
 
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre compte à été créer avec succès ! Pour vous connecter, veuillez valider votre compte via le mail qui vous à été envoyé.'
+            );
 
             // generate a signed url and email it to the user
             $a = $this->emailVerifier->sendEmailConfirmation(
@@ -91,7 +95,7 @@ class RegistrationController extends AbstractController
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        $this->addFlash('success', 'Votre email à bien été vérifier.');
 
         return $this->redirectToRoute('home');
     }

@@ -6,8 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\FigureRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: FigureRepository::class)]
+#[UniqueEntity(
+    fields: ['name'],
+    message: 'Une figure portant ce nom existe déjà, veuillez changer de nom.',
+)]
 class Figure
 {
     #[ORM\Id]

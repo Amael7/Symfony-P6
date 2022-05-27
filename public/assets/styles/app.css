@@ -298,6 +298,11 @@
   margin: 16px auto;
 }
 
+.row label {
+  margin-bottom: 10px !important;
+  margin-right: 15px !important;
+}
+
 .form-fig-name input {
   width: 80%;
 }

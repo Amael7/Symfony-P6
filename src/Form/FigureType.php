@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class FigureType extends AbstractType
 {
@@ -26,9 +27,17 @@ class FigureType extends AbstractType
         $now = new \DateTime();
         
         $builder
-            ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
+            ->add('name', TextType::class, [
+                        'label' => 'Nom de la figure',
+                        'attr' => ['placeholder' => "Nom de la figure"], 
+                    ]
+                )
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+                'attr' => ['placeholder' => "Description"],
+            ])
             ->add('type', EntityType::class, [
+                'label' => 'Type de figure',
                 'class' => EntityFigureType::class,
             ])
             ->add('createdAt', HiddenType::class, [

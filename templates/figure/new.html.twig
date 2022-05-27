@@ -19,19 +19,19 @@
 		<div class="form-container text-align-left">
 			{{ form_start(form) }}
 				<div class="row form-fig-name">
-					{{ form_widget(form.name, {'attr': {'placeholder': "Nom de la figure"}}) }}
+					{{ form_row(form.name)}}
 				</div>
 				<div class="row form-fig-description">
-          {{ form_widget(form.description, {'attr': {'placeholder': "Description"}}) }}
+          {{ form_row(form.description) }}
 				</div>
 				<div class="row form-fig-type">
-          {{ form_widget(form.type) }}
+          {{ form_row(form.type) }}
 				</div>
 				<div class="row form-fig-type">
-          {{ form_widget(form.images) }}
+          {{ form_row(form.images) }}
 				</div>
 				<div class="row form-fig-type">
-          {{ form_widget(form.videos) }}
+          {{ form_row(form.videos) }}
 				</div>
 				<div class="row form-fig-button">
           {{ form_widget(form.save) }}

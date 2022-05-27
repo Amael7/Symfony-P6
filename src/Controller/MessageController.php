@@ -68,6 +68,12 @@ class MessageController extends AbstractController
         }
         $em->remove($message);
         $em->flush();
+
+        $this->addFlash(
+            'success',
+            'Votre commentaire à bien été supprimé !'
+        );
+
         return $this->redirect($this->generateUrl('figure_show', ['id' => $figureId, 'slug' => $slug]));
     }
 }

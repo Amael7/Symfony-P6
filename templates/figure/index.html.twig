@@ -10,6 +10,15 @@
 	</div>
 
 	<div class="content-container">
+		<div class="row">
+			{% for label, messages in app.flashes(['success', 'warning']) %}
+				{% for message in messages %}
+					<div class="flash-{{ label }} mg-l">
+						<p><strong>{{ message }}</strong></p>
+					</div>
+				{% endfor %}
+			{% endfor %}
+		</div>
 		<div id="figure-list" class="figures-container">
 			{% for figure in figures %}
 				<div class="figure-box">
@@ -34,6 +43,7 @@
 				</div>
 			{% endfor %}
 		</div>
+		
 		{% if figuresAll|length > 10 %}
 			<button id="js-load-more-btn-figures" class="btn" data-total-number-figures="{{figuresAll|length}}">Charger plus</button>
 			<a id="js-arrow-up" class="anchor --to_up d-none" href="#figure-list"><img src="{{ asset('svg/arrow-up.svg') }}" alt="Arrow up"></a>

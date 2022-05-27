@@ -63,6 +63,16 @@
 			<div class="new-message-box">
 				{{ include('partials/_new_edit_message.html.twig') }}
 			</div>
+
+			<div class="row">
+				{% for label, messages in app.flashes(['success', 'warning']) %}
+					{% for message in messages %}
+						<div class="flash-{{ label }} mg-l">
+							<p><strong>{{ message }}</strong></p>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
 		{% endif %}
 
 		{% if messages %}
@@ -71,9 +81,13 @@
 				{% for message in messages %}
 					<div class="message-box">
 						<div class="user-profil">
-							<img class="user-picture" src="{{ message.user.photo }}" alt="photo de profil">
+							<img class="user-picture" src="{{ asset("uploads/" ~ message.user.photo) }}" alt="photo de profil">
 							<div class="user-data">
-								<p>{{ message.user.fullname }} </p>
+								{% if message.user.fullname != ' ' %}
+									<p>{{ message.user.fullname }} </p>
+								{% else %}
+									<p>{{ message.user.username }} </p>
+								{% endif %}
 								<p>{{ message.createdAt }} </p>
 							</div>
 						</div>

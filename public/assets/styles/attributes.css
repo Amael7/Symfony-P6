@@ -70,6 +70,10 @@
   margin-right: 40px;
 }
 
+.mg-l {
+  margin: 20px;
+}
+
 /* Margin End */
 
 .txt-white {
@@ -82,4 +86,9 @@
 
 .--red {
   color: #EE5F5B;
+}
+
+.row label::after{
+  content: "\a";
+  white-space: pre;
 }
