@@ -53,6 +53,10 @@ class UserController extends AbstractController
 			}
 			$entityManager->persist($user);
 			$entityManager->flush();
+			$this->addFlash(
+					'success',
+					'Votre Compte à bien été mis à jour !'
+			);
 			return $this->redirectToRoute('user');
 		}
 

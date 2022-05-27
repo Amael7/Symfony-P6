@@ -5,6 +5,15 @@
 {% block body %}
 <div class="content-container text-left">
   <h1 class="mg-bottom-l">Mon Profil</h1>
+  <div class="row">
+		{% for label, messages in app.flashes(['success', 'warning']) %}
+			{% for message in messages %}
+				<div class="flash-{{ label }} mg-l">
+					<p><strong>{{ message }}</strong></p>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
   <div class="header-profil">
     <div class="profil_picture mg-right-xl">
       <img src="{{ asset("uploads/" ~ user.photo) }}" alt="user profil">

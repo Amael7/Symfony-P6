@@ -81,24 +81,33 @@ class FigureController extends AbstractController
             }
             // on récupère les videos transmises
             $videos = $form->get('videos')->getData();
-            // on stocke l'url de la video dans la DB
-            $vid = new Video();
-            if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
-                $vid->setPlatform("dailymotion");
-                $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
-            } else {
-                $vid->setPlatform("youtube");
-                $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+            if (isset($videos)) {
+                // on stocke l'url de la video dans la DB
+                $vid = new Video();
+                if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
+                    $vid->setPlatform("dailymotion");
+                    $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
+                } else {
+                    $vid->setPlatform("youtube");
+                    $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+                }
+                $vid->setUrl($url);
+                $figure->addVideo($vid);
             }
-            $vid->setUrl($url);
-            $figure->addVideo($vid);
 
             $figure = $form->getData();
             $em = $manager->getManager();
             $em->persist($figure);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Figure enregistré avec succès !'
+            );
+
             return $this->redirect($this->generateUrl('figures'));
         }
+
         return $this->render('figure/new.html.twig', [
             'form' => $form->createView(),
             'figure' => $figure
@@ -117,7 +126,7 @@ class FigureController extends AbstractController
         $form = $this->createForm(FigureType::class, $figure);
 
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // on récupère les images transmises
             $images = $form->get('images')->getData();
             if (count($images) >= 1 AND reset($images) != "default_image.jpeg") {
@@ -140,24 +149,32 @@ class FigureController extends AbstractController
 
             // on récupère les videos transmises
             $videos = $form->get('videos')->getData();
-
-            // on stocke l'url de la video dans la DB
-            $vid = new Video();
-            if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
-                $vid->setPlatform("dailymotion");
-                $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
-            } else {
-                $vid->setPlatform("youtube");
-                $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+            if (isset($videos)) {
+                // on stocke l'url de la video dans la DB
+                $vid = new Video();
+                if (str_contains($videos, "dailymotion") || str_contains($videos, "dai.ly")) {
+                    $vid->setPlatform("dailymotion");
+                    $url = str_replace(["https://www.dailymotion.com/video/", "https://dai.ly/"],'https://www.dailymotion.com/embed/video/', $videos);
+                } else {
+                    $vid->setPlatform("youtube");
+                    $url = str_replace(["https://www.youtube.com/watch?v=", "https://youtu.be/"],'https://www.youtube.com/embed/', $videos);
+                }
+                $vid->setUrl($url);
+                $figure->addVideo($vid);
             }
-            $vid->setUrl($url);
-            $figure->addVideo($vid);
 
             $em = $manager->getManager();
             $figure = $form->getData();
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Figure mis à jour avec succès !'
+            );
+
             return $this->redirect($this->generateUrl('figure_show', ['id' => $id, 'slug' => $slug]));
-        }
+        } 
+        
         return $this->render('figure/edit.html.twig', [
             'form' => $form->createView(),
             'figure' => $figure
@@ -195,11 +212,15 @@ class FigureController extends AbstractController
             $em = $manager->getManager();
             $em->persist($message);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre commentaire à été posté !'
+            );
+
             return $this->redirect($this->generateUrl('figure_show', ['id' => $id, 'slug' => $slug]));
-        }
+        } 
         // Message Ending Block
-
-
         return $this->render('figure/show.html.twig', [
             'figure' => $figure,
             'user' => $user,
@@ -221,6 +242,12 @@ class FigureController extends AbstractController
         }
         $em->remove($figure);
         $em->flush();
+
+        $this->addFlash(
+            'success',
+            'La figure à été supprimé avec succès !'
+        );
+
         return $this->redirect($this->generateUrl('figures'));
     }
 

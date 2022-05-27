@@ -12,35 +12,20 @@
 		<h1 class="mg-top-xl mg-bottom-xl">Editer Profil</h1>
 		<div class="form-container">
 			{{ form_start(userForm) }}
-				<div class="row">
-					{{ form_label(userForm.email, 'Email') }}
+				<div class="row form-fig-name">
+					{{ form_row(userForm.email)}}
 				</div>
-				<div class="row">
-					{{ form_widget(userForm.email, {'attr': {'placeholder': 'Email', 'class': 'form-control'}}) }}
+				<div class="row form-fig-name">
+					{{ form_row(userForm.username)}}
 				</div>
-				<div class="row">
-					{{ form_label(userForm.username, 'Username') }}
+				<div class="row form-fig-name">
+					{{ form_row(userForm.firstname)}}
 				</div>
-				<div class="row">
-					{{ form_widget(userForm.username, {'attr': {'placeholder': 'Username', 'class': 'form-control'}}) }}
+				<div class="row form-fig-name">
+					{{ form_row(userForm.lastname)}}
 				</div>
-				<div class="row">
-					{{ form_label(userForm.lastname, 'Lastname') }}
-				</div>
-				<div class="row">
-					{{ form_widget(userForm.lastname, {'attr': {'placeholder': 'Lastname', 'class': 'form-control'}}) }}
-				</div>
-				<div class="row">
-					{{ form_label(userForm.firstname, 'Firstname') }}
-				</div>
-				<div class="row">
-					{{ form_widget(userForm.firstname, {'attr': {'placeholder': 'Firstname', 'class': 'form-control'}}) }}
-				</div>
-				<div class="row">
-					{{ form_label(userForm.photo, 'Photo') }}
-				</div>
-				<div class="row">
-					{{ form_widget(userForm.photo, {'attr': {'placeholder': 'Photo', 'class': 'form-control'}}) }}
+				<div class="row form-fig-name">
+					{{ form_row(userForm.photo)}}
 				</div>
 				<div class="row mg-top-l">
 					<button type="submit" class="btn green-success">Editer</button>

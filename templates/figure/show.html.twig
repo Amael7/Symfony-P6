@@ -65,6 +65,16 @@
 			</div>
 		{% endif %}
 
+	<div class="row">
+		{% for label, messages in app.flashes(['success', 'warning']) %}
+			{% for message in messages %}
+				<div class="flash-{{ label }} mg-l">
+					<p><strong>{{ message }}</strong></p>
+				</div>
+			{% endfor %}
+		{% endfor %}
+	</div>
+
 		{% if messages %}
 			<div id="message-list" class="messages">
 				<h3 class="text-align-left">Nombre total de commentaires : {{messagesAll|length}}</h3>

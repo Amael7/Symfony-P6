@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -17,10 +18,22 @@ class UserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('username')
-            ->add('lastname')
-            ->add('firstname')
+            ->add('email', TextType::class, [
+                'label' => 'Email',
+                'attr' => ['placeholder' => "Email"]
+            ])
+            ->add('username', TextType::class, [
+                'label' => 'Username',
+                'attr' => ['placeholder' => "Username"]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom de famille',
+                'attr' => ['placeholder' => "Nom de famille"]
+            ])
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => ['placeholder' => "Prénom"]
+            ])
             ->add('photo', FileType::class, [
                 // 'empty_data' => "default-profil.png",
                 'label' => "Fichier de l'image",
