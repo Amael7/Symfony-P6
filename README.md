@@ -8,7 +8,7 @@ Développez de A à Z le site communautaire SnowTricks
 ### Version du projet
 
 - PHP 8.0.0
-- mysql 5.7
+- mysql 8.0.28
 - Symfony CLI version 5.3.0
 - Composer version 2.2.5
 - Node v16.14.2
