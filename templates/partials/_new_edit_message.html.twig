@@ -5,6 +5,7 @@
                 {{ form_widget(form.content, {'attr': {'placeholder': "Contenu du message"}}) }}
             </div>
             <div class="vertical-align-top">
+                {{ form_widget(form.createdAt, { 'attr': {'class': 'd-none'} }) }}
                 {{ form_widget(form.save) }}
             </div>
         {{ form_end(form) }}

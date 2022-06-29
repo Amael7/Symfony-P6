@@ -4,7 +4,7 @@
       <img class="user-picture" src="{{ message.user.photo }}" alt="photo de profil">
       <div class="user-data">
         <p>{{ message.user.fullname }} </p>
-        <p>{{ message.createdAt }} </p>
+        <p>{{ message.createdAt|date('d/m/Y H:i:s') }} </p>
       </div>
     </div>
     <div class="message">

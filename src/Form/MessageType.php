@@ -8,8 +8,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MessageType extends AbstractType
@@ -22,11 +22,8 @@ class MessageType extends AbstractType
             ->add('figure', EntityType::class, [
                 'class' => Figure::class,
             ])
-            ->add('createdAt', HiddenType::class, [
-            'empty_data' => $now->format('d/m/Y H:i:s'),
-            ])
-            ->add('updatedAt', HiddenType::class, [
-            'data' => $now->format('d/m/Y H:i:s'),
+            ->add('createdAt', DateTimeType::class, [
+                'data' => $now,
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,

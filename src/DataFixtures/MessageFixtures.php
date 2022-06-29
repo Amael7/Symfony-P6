@@ -33,8 +33,7 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
             $message->setContent($faker->realText)
                 ->setUser($user)
                 ->setFigure($figure)
-                ->setCreatedAt($now->format('d/m/Y H:i:s'))
-                ->setUpdatedAt($now->format('d/m/Y H:i:s'));
+                ->setCreatedAt($now);
 
             $manager->persist($message);
         }
