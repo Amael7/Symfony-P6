@@ -1,9 +1,13 @@
 {% for message in messages %}
   <div class="message-box">
     <div class="user-profil">
-      <img class="user-picture" src="{{ message.user.photo }}" alt="photo de profil">
+      <img class="user-picture" src="{{ asset("uploads/" ~ message.user.photo) }}" alt="photo de profil">
       <div class="user-data">
-        <p>{{ message.user.fullname }} </p>
+        {% if message.user.fullname != ' ' %}
+          <p>{{ message.user.fullname }} </p>
+        {% else %}
+          <p>{{ message.user.username }} </p>
+        {% endif %}
         <p>{{ message.createdAt|date('d/m/Y H:i:s') }} </p>
       </div>
     </div>
