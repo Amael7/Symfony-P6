@@ -16,7 +16,7 @@ class MessageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $now = new \DateTime();
+        $now = new \DateTime('now');
         $builder
             ->add('content', TextareaType::class)
             ->add('figure', EntityType::class, [

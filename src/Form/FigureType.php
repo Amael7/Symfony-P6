@@ -18,8 +18,7 @@ class FigureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $now = new \DateTime();
-        
+        $now = new \DateTime('now');
         $builder
             ->add('name', TextType::class, [
                         'label' => 'Nom de la figure',
