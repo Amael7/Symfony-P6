@@ -44,7 +44,7 @@ class FigureFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i <= 9; $i++) {
             $user = $users[rand(0, 6)];
             $figure = new Figure();
-            $now = new \DateTime('now');
+            $now = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
             $figure->setName($figureNames[$i])
                 ->setDescription($figureDescriptions[$i])
                 ->setType($figureTypes[rand(0, 4)])

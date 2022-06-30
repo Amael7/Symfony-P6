@@ -28,7 +28,7 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i <= 20; $i++) {
             $figure = $figures[rand(0, 9)];
             $user = $users[rand(0, 6)];
-            $now = new \DateTime('now');
+            $now = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
             $message = new Message();
             $message->setContent($faker->realText)
                 ->setUser($user)
