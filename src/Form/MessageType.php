@@ -24,6 +24,7 @@ class MessageType extends AbstractType
             ])
             ->add('createdAt', DateTimeType::class, [
                 'data' => $now,
+                'widget' => 'single_text',
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,

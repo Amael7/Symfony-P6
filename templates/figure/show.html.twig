@@ -50,11 +50,23 @@
 		</div>
 		<ul class="info-list">
 			<li>
-				<p>Type: {{ figure.type.title }}</p>
+				<p>Type : {{ figure.type.title }}</p>
 			</li>
 			<li>
-				<p>Auteur: {{ figure.user.firstName }}</p>
+				{% if figure.user.fullname != ' ' %}
+					<p>Auteur : {{ figure.user.fullname }}</p>
+				{% else %}
+					<p>Auteur : {{ figure.user.username }}</p>
+				{% endif %}
 			</li>
+			<li>
+				<p>Créé : {{ figure.createdAt|date('d/m/Y H:i:s') }}</p>
+			</li>
+			{% if figure.updatedAt != figure.createdAt %}
+				<li>
+					<p>Mis à jour : {{ figure.updatedAt|date('d/m/Y H:i:s') }}</p>
+				</li>
+			{% endif %}
 		</ul>
 	</div>
 
@@ -88,7 +100,7 @@
 								{% else %}
 									<p>{{ message.user.username }} </p>
 								{% endif %}
-								<p>{{ message.createdAt }} </p>
+								<p>{{ message.createdAt|date('d/m/Y H:i:s') }} </p>
 							</div>
 						</div>
 						<div class="message">

@@ -49,8 +49,8 @@ class FigureFixtures extends Fixture implements DependentFixtureInterface
                 ->setDescription($figureDescriptions[$i])
                 ->setType($figureTypes[rand(0, 4)])
                 ->setUser($user)
-                ->setCreatedAt($now->format('d/m/Y H:i:s'))
-                ->setUpdatedAt($now->format('d/m/Y H:i:s'));
+                ->setCreatedAt($now)
+                ->setUpdatedAt($now);
             $manager->persist($figure);
         }
         $manager->flush();

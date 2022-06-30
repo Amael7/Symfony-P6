@@ -2,23 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\User;
-use App\Entity\Image;
-use App\Entity\Video;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 use App\Entity\FigureType as EntityFigureType;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 class FigureType extends AbstractType
 {
@@ -40,11 +34,13 @@ class FigureType extends AbstractType
                 'label' => 'Type de figure',
                 'class' => EntityFigureType::class,
             ])
-            ->add('createdAt', HiddenType::class, [
-                'empty_data' => $now->format('d/m/Y H:i:s'),
+            ->add('createdAt', DateTimeType::class, [
+                'data' => $now,
+                'widget' => 'single_text',
             ])
-            ->add('updatedAt', HiddenType::class, [
-            'data' => $now->format('d/m/Y H:i:s'),
+            ->add('updatedAt', DateTimeType::class, [
+                'data' => $now,
+                'widget' => 'single_text', #->format('d/m/Y H:i:s'),
             ])
             ->add('images', FileType::class, [
                 'empty_data' => ["default_image.jpeg"],
