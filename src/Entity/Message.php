@@ -24,11 +24,8 @@ class Message
     #[ORM\Column(type: 'text')]
     private $content;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'datetime')]
     private $createdAt;
-
-    #[ORM\Column(type: 'string')]
-    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -71,26 +68,14 @@ class Message
         return $this;
     }
 
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?\datetime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(\datetime $createdAt): self
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?string
-    {
-        return $this->updatedAt;
-    }
-
-    public function setUpdatedAt(string $updatedAt): self
-    {
-        $this->updatedAt = $updatedAt;
 
         return $this;
     }

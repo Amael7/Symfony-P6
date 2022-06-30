@@ -6,8 +6,6 @@ function loadMoreMessages() {
     const figureId = btnLoadMore.dataset.figureId;
     const numberMessagesLoaded = document.getElementsByClassName('message-box').length;
     const href = `/figures/${figureId}/messages/${numberMessagesLoaded}`;
-    console.log(href);
-
     axios.get(href).then(function(response) {
       divMessagesList.insertAdjacentHTML('beforeend', response.data);
       const numberMessagesLoadNow = document.getElementsByClassName('message-box').length;

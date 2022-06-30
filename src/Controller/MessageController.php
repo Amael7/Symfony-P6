@@ -12,29 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MessageController extends AbstractController
 {
-    // #[Route('/figures/{figureId}/{slug}/message/new', name: 'message_new')]
-    // public function create(ManagerRegistry $manager, Request $request, $figureId, $slug) {
-    //     $message = new Message();
-    //     $figure = $manager->getRepository(Figure::class)->find($figureId);
-    //     $user = $this->getUser();
-
-    //     $form = $this->createForm(MessageType::class, $message);
-    //     $form->add('user', HiddenType::class, [
-    //             'empty_data' => $user,
-    //         ])
-    //         ->add('figure', HiddenType::class, [
-    //             'empty_data' => $figure,
-    //         ]);
-
-    //     $form->handleRequest($request);
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $message = $form->getData();
-    //         $em = $manager->getManager();
-    //         $em->persist($message);
-    //         $em->flush();
-    //         return $this->redirect($this->generateUrl('figure_show', ['id' => $figureId, 'slug' => $slug]));
-    //     }
-    // }
 
     // Get the 10 next messages in the database and create a Twig file with them that will be displayed via Javascript
     #[Route('/figures/{id}/messages/{start}', name: 'loadMessages')]

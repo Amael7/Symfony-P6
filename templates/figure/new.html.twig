@@ -33,6 +33,8 @@
 				<div class="row form-fig-type">
           {{ form_row(form.videos) }}
 				</div>
+					{{ form_widget(form.createdAt, { 'attr': {'class': 'd-none'} }) }}
+					{{ form_widget(form.updatedAt, { 'attr': {'class': 'd-none'} }) }}
 				<div class="row form-fig-button">
           {{ form_widget(form.save) }}
 				</div>

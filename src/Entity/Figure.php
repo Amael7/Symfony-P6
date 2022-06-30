@@ -30,10 +30,10 @@ class Figure
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'datetime')]
     private $createdAt;
 
-    #[ORM\Column(type: 'string')]
+    #[ORM\Column(type: 'datetime')]
     private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'figure', targetEntity: Image::class, orphanRemoval: true, cascade:['persist'])]
@@ -97,24 +97,26 @@ class Figure
         return $this;
     }
 
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?\datetime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(string $createdAt): self
+    public function setCreatedAt(\datetime $createdAt): self
     {
-        $this->createdAt = $createdAt;
+        if ($this->getCreatedAt() === null) {
+            $this->createdAt = $createdAt;
+        }
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?string
+    public function getUpdatedAt(): ?\datetime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(string $updatedAt): self
+    public function setUpdatedAt(\datetime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -230,10 +232,11 @@ class Figure
     
     public function displayDate()
     {
-        return substr($this->getCreatedAt(), 0, 10); 
+        return $this->getCreatedAt()->format('d/m/Y H:i:s'); 
     }
 
     public function slug() {
-        return str_replace([' ', '/', ':', '?'], '-', $this->getName()) . '-' . str_replace([' ', '/', ':'], '-', $this->displayDate());
+        $slug = $this->getName() . '-' . $this->displayDate();
+        return str_replace([' ', '/', ':'] ,'-' , $slug);
     }
 }

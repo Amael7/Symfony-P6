@@ -28,13 +28,12 @@ class MessageFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i <= 20; $i++) {
             $figure = $figures[rand(0, 9)];
             $user = $users[rand(0, 6)];
-            $now = new \DateTime();
+            $now = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
             $message = new Message();
             $message->setContent($faker->realText)
                 ->setUser($user)
                 ->setFigure($figure)
-                ->setCreatedAt($now->format('d/m/Y H:i:s'))
-                ->setUpdatedAt($now->format('d/m/Y H:i:s'));
+                ->setCreatedAt($now);
 
             $manager->persist($message);
         }
